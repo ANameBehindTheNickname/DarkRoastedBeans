@@ -13,7 +13,7 @@ final class ItemListVC: UIViewController {
     
     // MARK: - Public properites
     
-    var onDidSelectRow: (() -> Void)?
+    var onDidSelectRow: ((Int) -> Void)?
     
     // MARK: - Private properites
     
@@ -67,6 +67,6 @@ extension ItemListVC: UITableViewDataSource {
 
 extension ItemListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        onDidSelectRow?()
+        onDidSelectRow?(indexPath.row)
     }
 }
