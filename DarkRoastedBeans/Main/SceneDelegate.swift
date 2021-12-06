@@ -15,11 +15,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let machineVM = MachineVCViewModel(companyName: "Dark roasted beans", startInstruction: "Tab the machine to start")
         let machineVC = MachineVC(viewModel: machineVM)
         let navigation = UINavigationController()
-        let brewingMachine = BrewingMachine(
-            styles: ["Coffee 1", "Coffee 2", "Coffee 3", "Coffee 4", "Coffee 5"],
-            sizes: ["Small", "Medium", "Large"],
-            extras: ["Sugar", "Milk"]
-        )
+        let brewingMachine = DummyMachine()
         
         let flow = DrinkBrewingFlow(navigation: navigation, brewingMachine: brewingMachine)
         machineVC.onViewDidLoad = {
