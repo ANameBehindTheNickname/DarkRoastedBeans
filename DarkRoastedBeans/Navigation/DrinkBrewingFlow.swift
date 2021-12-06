@@ -11,7 +11,7 @@ struct BrewingMachineViewModel {
     let extras: [String]
 }
 
-final class DrinkBrewingFlow: NSObject {
+final class DrinkBrewingFlow {
     private let navigation: UINavigationController
     private let brewingMachineVM: BrewingMachineViewModel
     
