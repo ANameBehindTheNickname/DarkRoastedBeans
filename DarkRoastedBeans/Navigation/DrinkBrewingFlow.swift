@@ -12,6 +12,8 @@ struct BrewingMachineViewModel {
 }
 
 final class DrinkBrewingFlow {
+    // MARK: - Private properites
+    
     private let navigation: UINavigationController
     private let brewingMachineVM: BrewingMachineViewModel
     
@@ -20,10 +22,14 @@ final class DrinkBrewingFlow {
         return .init(button)
     }()
     
+    // MARK: - Init
+    
     init(navigation: UINavigationController, brewingMachineVM: BrewingMachineViewModel) {
         self.navigation = navigation
         self.brewingMachineVM = brewingMachineVM
     }
+    
+    // MARK: - Public methods
     
     func start() {
         let title = "Select your style"
@@ -33,7 +39,9 @@ final class DrinkBrewingFlow {
         navigation.pushViewController(vc, animated: true)
     }
     
-    func styleStepCompleted(styleRow: Int) {
+    // MARK: - Private methods
+    
+    private func styleStepCompleted(styleRow: Int) {
         let title = "Select your size"
         let itemVMs = brewingMachineVM.sizes.map { ItemViewModel(title: $0, logoName: "") }
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
@@ -44,7 +52,7 @@ final class DrinkBrewingFlow {
         navigation.pushViewController(vc, animated: true)
     }
     
-    func sizeStepCompleted(styleRow: Int, sizeRow: Int) {
+    private func sizeStepCompleted(styleRow: Int, sizeRow: Int) {
         let title = "Select your extras"
         let itemVMs = brewingMachineVM.extras.map { ItemViewModel(title: $0, logoName: "") }
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
@@ -61,7 +69,7 @@ final class DrinkBrewingFlow {
         navigation.pushViewController(vc, animated: true)
     }
     
-    func extrasStepCompleted(styleRow: Int, sizeRow: Int, extrasRows: [Int]) {
+    private func extrasStepCompleted(styleRow: Int, sizeRow: Int, extrasRows: [Int]) {
         let title = "Overview"
         let style = brewingMachineVM.styles[styleRow]
         let size = brewingMachineVM.sizes[sizeRow]
@@ -75,6 +83,8 @@ final class DrinkBrewingFlow {
         navigation.pushViewController(vc, animated: true)
     }
 }
+
+// MARK: - NextButtonController
 
 private class NextButtonController {
     let button: UIBarButtonItem
