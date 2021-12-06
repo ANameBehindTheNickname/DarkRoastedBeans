@@ -15,6 +15,11 @@ final class DrinkBrewingFlow {
     private let navigation: UINavigationController
     private let brewingMachineVM: BrewingMachineViewModel
     
+    private lazy var buttonController: NextButtonController = {
+        let button = UIBarButtonItem(title: "Next", style: .plain, target: nil, action: nil)
+        return .init(button)
+    }()
+    
     init(navigation: UINavigationController, brewingMachineVM: BrewingMachineViewModel) {
         self.navigation = navigation
         self.brewingMachineVM = brewingMachineVM
@@ -43,20 +48,49 @@ final class DrinkBrewingFlow {
         let title = "Select your extras"
         let itemVMs = brewingMachineVM.extras.map { ItemViewModel(title: $0, logoName: "") }
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
-        vc.onDidSelectRow = { [weak self] in
-            self?.extrasStepCompleted(styleRow: styleRow, sizeRow: sizeRow, extrasRow: $0)
+        vc.onViewDidLoad = {
+            vc.tableView.allowsMultipleSelection = true
+        }
+        
+        buttonController.callback = { [weak self] in
+            let selectedExtras = vc.tableView.indexPathsForSelectedRows?.map { $0.row } ?? []
+            self?.extrasStepCompleted(styleRow: styleRow, sizeRow: sizeRow, extrasRows: selectedExtras)
+        }
+        
+        vc.navigationItem.rightBarButtonItem = buttonController.button
+        navigation.pushViewController(vc, animated: true)
+    }
+    
+    func extrasStepCompleted(styleRow: Int, sizeRow: Int, extrasRows: [Int]) {
+        let title = "Overview"
+        let style = brewingMachineVM.styles[styleRow]
+        let size = brewingMachineVM.sizes[sizeRow]
+        let extras = extrasRows.map { brewingMachineVM.extras[$0] }
+        let itemVMs = ([style, size] + extras).map { ItemViewModel(title: $0, logoName: "") }
+        let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
+        vc.onViewDidLoad = {
+            vc.tableView.allowsSelection = false
         }
         
         navigation.pushViewController(vc, animated: true)
     }
+}
+
+private class NextButtonController {
+    let button: UIBarButtonItem
+    var callback: (() -> Void)?
     
-    func extrasStepCompleted(styleRow: Int, sizeRow: Int, extrasRow: Int) {
-        let title = "Overview"
-        let style = brewingMachineVM.styles[styleRow]
-        let size = brewingMachineVM.sizes[sizeRow]
-        let extras = brewingMachineVM.extras[extrasRow]
-        let itemVMs = [style, size, extras].map { ItemViewModel(title: $0, logoName: "") }
-        let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
-        navigation.pushViewController(vc, animated: true)
+    init(_ button: UIBarButtonItem) {
+        self.button = button
+        self.setup()
+    }
+    
+    private func setup() {
+        button.target = self
+        button.action = #selector(fireCallback)
+    }
+    
+    @objc private func fireCallback() {
+        callback?()
     }
 }

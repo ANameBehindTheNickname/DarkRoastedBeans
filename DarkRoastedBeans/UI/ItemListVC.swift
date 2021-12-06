@@ -13,6 +13,7 @@ final class ItemListVC: UIViewController {
     
     // MARK: - Public properites
     
+    var onViewDidLoad: (() -> Void)?
     var onDidSelectRow: ((Int) -> Void)?
     
     // MARK: - Private properites
@@ -42,6 +43,7 @@ final class ItemListVC: UIViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
+        onViewDidLoad?()
     }
 }
 
