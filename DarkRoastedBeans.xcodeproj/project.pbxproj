@@ -14,6 +14,7 @@
 		F8815FFB275E009500ACE375 /* ItemListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8815FF9275E009500ACE375 /* ItemListVC.swift */; };
 		F8815FFC275E009500ACE375 /* ItemListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8815FFA275E009500ACE375 /* ItemListVC.xib */; };
 		F8815FFF275E05DF00ACE375 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8815FFE275E05DF00ACE375 /* ItemViewModel.swift */; };
+		F8816001275E07F200ACE375 /* DrinkBrewingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8816000275E07F200ACE375 /* DrinkBrewingFlow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		F8815FF9275E009500ACE375 /* ItemListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListVC.swift; sourceTree = "<group>"; };
 		F8815FFA275E009500ACE375 /* ItemListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListVC.xib; sourceTree = "<group>"; };
 		F8815FFE275E05DF00ACE375 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
+		F8816000275E07F200ACE375 /* DrinkBrewingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkBrewingFlow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		F8394955275DFE5B00E810E4 /* DarkRoastedBeans */ = {
 			isa = PBXGroup;
 			children = (
+				F8816002275E07FA00ACE375 /* Navigation */,
 				F8815FFD275E009D00ACE375 /* UI */,
 				F8394956275DFE5B00E810E4 /* AppDelegate.swift */,
 				F8394958275DFE5B00E810E4 /* SceneDelegate.swift */,
@@ -76,6 +79,14 @@
 				F8815FFA275E009500ACE375 /* ItemListVC.xib */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		F8816002275E07FA00ACE375 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				F8816000275E07F200ACE375 /* DrinkBrewingFlow.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +163,7 @@
 				F8815FFF275E05DF00ACE375 /* ItemViewModel.swift in Sources */,
 				F8815FFB275E009500ACE375 /* ItemListVC.swift in Sources */,
 				F8394959275DFE5B00E810E4 /* SceneDelegate.swift in Sources */,
+				F8816001275E07F200ACE375 /* DrinkBrewingFlow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
