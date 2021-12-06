@@ -36,7 +36,7 @@ final class DrinkBrewingFlow {
         let itemVMs = brewingMachineVM.styles.map { ItemViewModel(title: $0, logoName: "") }
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onDidSelectRow = styleStepCompleted
-        navigation.pushViewController(vc, animated: true)
+        navigation.pushViewController(vc, animated: false)
     }
     
     // MARK: - Private methods

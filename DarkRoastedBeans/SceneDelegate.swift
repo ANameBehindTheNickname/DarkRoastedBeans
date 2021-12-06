@@ -12,6 +12,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
+        let machineVM = MachineVCViewModel(companyName: "Dark roasted beans", startInstruction: "Tab the machine to start")
+        let machineVC = MachineVC(viewModel: machineVM)
         let navigation = UINavigationController()
         let brewingMachineVM = BrewingMachineViewModel(
             styles: ["Coffee 1", "Coffee 2", "Coffee 3", "Coffee 4", "Coffee 5"],
@@ -20,10 +22,14 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         )
         
         let flow = DrinkBrewingFlow(navigation: navigation, brewingMachineVM: brewingMachineVM)
-        flow.start()
+        machineVC.onViewDidLoad = {
+            navigation.modalPresentationStyle = .fullScreen
+            machineVC.showDetailViewController(navigation, sender: machineVC)
+            flow.start()
+        }
         
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = navigation
+        window?.rootViewController = machineVC
         window?.makeKeyAndVisible()
     }
 }
