@@ -8,8 +8,12 @@ import UIKit
 final class ItemListVC: UIViewController {
     // MARK: - IBOutlets
     
-    @IBOutlet weak var listTitleLabel: UILabel!
+    @IBOutlet private weak var listTitleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    
+    // MARK: - Public properites
+    
+    var onDidSelectRow: (() -> Void)?
     
     // MARK: - Private properites
     
@@ -37,6 +41,7 @@ final class ItemListVC: UIViewController {
         listTitleLabel.text = listTitle
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
         tableView.dataSource = self
+        tableView.delegate = self
     }
 }
 
@@ -55,5 +60,13 @@ extension ItemListVC: UITableViewDataSource {
         cell.textLabel?.text = vm.title
         
         return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ItemListVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        onDidSelectRow?()
     }
 }
