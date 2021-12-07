@@ -6,12 +6,21 @@
 import Foundation
 
 public final class DarkRoastedBeansRemoteService: DrinkService {
-    weak var delegate: DrinkServiceDelegate?
+    // MARK: - Public properites
+    
+    public weak var delegate: DrinkServiceDelegate?
+    
+    // MARK: - Private properites
+    
     private let session: URLSession
+    
+    // MARK: - Init
     
     public init(session: URLSession) {
         self.session = session
     }
+    
+    // MARK: - DrinkService methods
     
     public func getDrinkMenu() {
         let url = URL(string: "https://darkroastedbeans.coffeeit.nl/coffee-machine/60ba1ab72e35f2d9c786c610")!
