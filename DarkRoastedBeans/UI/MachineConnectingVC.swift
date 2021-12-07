@@ -5,7 +5,7 @@
 
 import UIKit
 
-final class MachineVC: UIViewController {
+final class MachineConnectingVC: UIViewController {
     // MARK: - IBOutlets
     
     @IBOutlet private weak var companyNameLabel: UILabel!
@@ -17,11 +17,11 @@ final class MachineVC: UIViewController {
     
     // MARK: - Private properites
     
-    private let viewModel: MachineVCViewModel
+    private let viewModel: MachineConnectingVCViewModel
     
     // MARK: - Init
     
-    init(viewModel: MachineVCViewModel) {
+    init(viewModel: MachineConnectingVCViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
