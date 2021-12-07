@@ -13,7 +13,12 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let connectingVM = MachineConnectingVCViewModel(companyName: "Dark roasted beans", startInstruction: "Tab the machine to start")
+        let connectingVM = MachineConnectingVCViewModel(
+            companyName: "Dark roasted beans",
+            startInstruction: "Tab the machine to start",
+            tutorial: "How does this work"
+        )
+        
         let connectingVC = MachineConnectingVC(viewModel: connectingVM)
         let brewingMachine = DummyMachine()
         brewingMachine.delegate = self

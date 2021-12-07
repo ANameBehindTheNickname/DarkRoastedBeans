@@ -10,6 +10,9 @@ final class MachineConnectingVC: UIViewController {
     
     @IBOutlet private weak var companyNameLabel: UILabel!
     @IBOutlet private weak var startInstructionLabel: UILabel!
+    @IBOutlet private weak var imageView: UIImageView!
+    @IBOutlet private weak var tutorialLabel: UILabel!
+    
     
     // MARK: - Public properites
     
@@ -35,12 +38,31 @@ final class MachineConnectingVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        companyNameLabel.text = viewModel.companyName
-        startInstructionLabel.text = viewModel.startInstruction
+        setSubviewsWithModels()
+        styleSubviews()
         
         // Simulate machine connection
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.onViewDidLoad?()
         }
+    }
+    
+    // MARK: - Private methods
+    
+    private func setSubviewsWithModels() {
+        companyNameLabel.text = viewModel.companyName
+        startInstructionLabel.text = viewModel.startInstruction
+    }
+    
+    private func styleSubviews() {
+        companyNameLabel.font = .init(name: "AvenirNextLTPro-Bold", size: 16)
+        startInstructionLabel.font = .init(name: "AvenirNext-Medium", size: 24)
+        imageView.contentMode = .scaleAspectFit
+        imageView.image = .init(named: "machine_connect")
+        
+        let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]
+        let underlineAttributedString = NSAttributedString(string: viewModel.tutorial, attributes: underlineAttribute)
+        tutorialLabel.attributedText = underlineAttributedString
+        tutorialLabel.font = .init(name: "AvenirNext-Medium", size: 16)
     }
 }

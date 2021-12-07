@@ -6,4 +6,5 @@
 struct MachineConnectingVCViewModel {
     let companyName: String
     let startInstruction: String
+    let tutorial: String
 }
