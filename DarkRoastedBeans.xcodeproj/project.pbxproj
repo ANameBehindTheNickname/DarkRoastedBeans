@@ -13,6 +13,10 @@
 		F8394959275DFE5B00E810E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8394958275DFE5B00E810E4 /* SceneDelegate.swift */; };
 		F8394960275DFE5C00E810E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F839495F275DFE5C00E810E4 /* Assets.xcassets */; };
 		F8394963275DFE5C00E810E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8394961275DFE5C00E810E4 /* LaunchScreen.storyboard */; };
+		F83E932E275F7FEA0054E2F9 /* DrinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E932D275F7FEA0054E2F9 /* DrinkService.swift */; };
+		F83E9330275F801B0054E2F9 /* DrinkServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E932F275F801B0054E2F9 /* DrinkServiceDelegate.swift */; };
+		F83E9332275F805B0054E2F9 /* DrinkMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E9331275F805B0054E2F9 /* DrinkMenu.swift */; };
+		F83E9334275F80B80054E2F9 /* DarkRoastedBeansRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E9333275F80B80054E2F9 /* DarkRoastedBeansRemoteService.swift */; };
 		F8532F71275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F70275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift */; };
 		F8532F73275E861E00C7FA17 /* Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F72275E861E00C7FA17 /* Extra.swift */; };
 		F8532F75275E863000C7FA17 /* BrewingMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F74275E863000C7FA17 /* BrewingMachine.swift */; };
@@ -33,6 +37,10 @@
 		F839495F275DFE5C00E810E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8394962275DFE5C00E810E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8394964275DFE5C00E810E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F83E932D275F7FEA0054E2F9 /* DrinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkService.swift; sourceTree = "<group>"; };
+		F83E932F275F801B0054E2F9 /* DrinkServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkServiceDelegate.swift; sourceTree = "<group>"; };
+		F83E9331275F805B0054E2F9 /* DrinkMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkMenu.swift; sourceTree = "<group>"; };
+		F83E9333275F80B80054E2F9 /* DarkRoastedBeansRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkRoastedBeansRemoteService.swift; sourceTree = "<group>"; };
 		F8532F70275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineConnectingVCViewModel.swift; sourceTree = "<group>"; };
 		F8532F72275E861E00C7FA17 /* Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extra.swift; sourceTree = "<group>"; };
 		F8532F74275E863000C7FA17 /* BrewingMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewingMachine.swift; sourceTree = "<group>"; };
@@ -41,11 +49,20 @@
 		F8815FFA275E009500ACE375 /* ItemListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListVC.xib; sourceTree = "<group>"; };
 		F8815FFE275E05DF00ACE375 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
 		F8816000275E07F200ACE375 /* DrinkBrewingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkBrewingFlow.swift; sourceTree = "<group>"; };
+		F881F28D275F61F800CED5D9 /* DrinkService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrinkService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F881F290275F61F800CED5D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8C4ADDF275F4B9600F8E67B /* BrewButtonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewButtonVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F8394950275DFE5B00E810E4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F881F28A275F61F800CED5D9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -59,6 +76,7 @@
 			isa = PBXGroup;
 			children = (
 				F8394955275DFE5B00E810E4 /* DarkRoastedBeans */,
+				F881F28E275F61F800CED5D9 /* DrinkService */,
 				F8394954275DFE5B00E810E4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				F8394953275DFE5B00E810E4 /* DarkRoastedBeans.app */,
+				F881F28D275F61F800CED5D9 /* DrinkService.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -126,7 +145,29 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		F881F28E275F61F800CED5D9 /* DrinkService */ = {
+			isa = PBXGroup;
+			children = (
+				F83E932D275F7FEA0054E2F9 /* DrinkService.swift */,
+				F83E932F275F801B0054E2F9 /* DrinkServiceDelegate.swift */,
+				F83E9331275F805B0054E2F9 /* DrinkMenu.swift */,
+				F83E9333275F80B80054E2F9 /* DarkRoastedBeansRemoteService.swift */,
+				F881F290275F61F800CED5D9 /* Info.plist */,
+			);
+			path = DrinkService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		F881F288275F61F800CED5D9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
 		F8394952275DFE5B00E810E4 /* DarkRoastedBeans */ = {
@@ -146,6 +187,24 @@
 			productReference = F8394953275DFE5B00E810E4 /* DarkRoastedBeans.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F881F28C275F61F800CED5D9 /* DrinkService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F881F294275F61F800CED5D9 /* Build configuration list for PBXNativeTarget "DrinkService" */;
+			buildPhases = (
+				F881F288275F61F800CED5D9 /* Headers */,
+				F881F289275F61F800CED5D9 /* Sources */,
+				F881F28A275F61F800CED5D9 /* Frameworks */,
+				F881F28B275F61F800CED5D9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DrinkService;
+			productName = DrinkService;
+			productReference = F881F28D275F61F800CED5D9 /* DrinkService.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -157,6 +216,10 @@
 				TargetAttributes = {
 					F8394952275DFE5B00E810E4 = {
 						CreatedOnToolsVersion = 12.5.1;
+					};
+					F881F28C275F61F800CED5D9 = {
+						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -174,6 +237,7 @@
 			projectRoot = "";
 			targets = (
 				F8394952275DFE5B00E810E4 /* DarkRoastedBeans */,
+				F881F28C275F61F800CED5D9 /* DrinkService */,
 			);
 		};
 /* End PBXProject section */
@@ -187,6 +251,13 @@
 				F8394963275DFE5C00E810E4 /* LaunchScreen.storyboard in Resources */,
 				F8815FFC275E009500ACE375 /* ItemListVC.xib in Resources */,
 				F8394960275DFE5C00E810E4 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F881F28B275F61F800CED5D9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +279,17 @@
 				F8532F79275E867A00C7FA17 /* DummyMachine.swift in Sources */,
 				F8532F71275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift in Sources */,
 				F8C4ADE1275F4B9600F8E67B /* BrewButtonVC.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F881F289275F61F800CED5D9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F83E9334275F80B80054E2F9 /* DarkRoastedBeansRemoteService.swift in Sources */,
+				F83E932E275F7FEA0054E2F9 /* DrinkService.swift in Sources */,
+				F83E9330275F801B0054E2F9 /* DrinkServiceDelegate.swift in Sources */,
+				F83E9332275F805B0054E2F9 /* DrinkMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +459,69 @@
 			};
 			name = Release;
 		};
+		F881F292275F61F800CED5D9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DrinkService/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.manbehindnickname.DrinkService;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		F881F293275F61F800CED5D9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = DrinkService/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MACOSX_DEPLOYMENT_TARGET = 11.3;
+				PRODUCT_BUNDLE_IDENTIFIER = com.manbehindnickname.DrinkService;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -394,6 +539,15 @@
 			buildConfigurations = (
 				F8394968275DFE5C00E810E4 /* Debug */,
 				F8394969275DFE5C00E810E4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F881F294275F61F800CED5D9 /* Build configuration list for PBXNativeTarget "DrinkService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F881F292275F61F800CED5D9 /* Debug */,
+				F881F293275F61F800CED5D9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
