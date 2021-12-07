@@ -13,6 +13,10 @@
 		F8394959275DFE5B00E810E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8394958275DFE5B00E810E4 /* SceneDelegate.swift */; };
 		F8394960275DFE5C00E810E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F839495F275DFE5C00E810E4 /* Assets.xcassets */; };
 		F8394963275DFE5C00E810E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8394961275DFE5C00E810E4 /* LaunchScreen.storyboard */; };
+		F83E932E275F7FEA0054E2F9 /* DrinkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E932D275F7FEA0054E2F9 /* DrinkService.swift */; };
+		F83E9330275F801B0054E2F9 /* DrinkServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E932F275F801B0054E2F9 /* DrinkServiceDelegate.swift */; };
+		F83E9332275F805B0054E2F9 /* DrinkMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E9331275F805B0054E2F9 /* DrinkMenu.swift */; };
+		F83E9334275F80B80054E2F9 /* DarkRoastedBeansRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E9333275F80B80054E2F9 /* DarkRoastedBeansRemoteService.swift */; };
 		F8532F71275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F70275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift */; };
 		F8532F73275E861E00C7FA17 /* Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F72275E861E00C7FA17 /* Extra.swift */; };
 		F8532F75275E863000C7FA17 /* BrewingMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F74275E863000C7FA17 /* BrewingMachine.swift */; };
@@ -33,6 +37,10 @@
 		F839495F275DFE5C00E810E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8394962275DFE5C00E810E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8394964275DFE5C00E810E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F83E932D275F7FEA0054E2F9 /* DrinkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkService.swift; sourceTree = "<group>"; };
+		F83E932F275F801B0054E2F9 /* DrinkServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkServiceDelegate.swift; sourceTree = "<group>"; };
+		F83E9331275F805B0054E2F9 /* DrinkMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkMenu.swift; sourceTree = "<group>"; };
+		F83E9333275F80B80054E2F9 /* DarkRoastedBeansRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkRoastedBeansRemoteService.swift; sourceTree = "<group>"; };
 		F8532F70275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineConnectingVCViewModel.swift; sourceTree = "<group>"; };
 		F8532F72275E861E00C7FA17 /* Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extra.swift; sourceTree = "<group>"; };
 		F8532F74275E863000C7FA17 /* BrewingMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewingMachine.swift; sourceTree = "<group>"; };
@@ -140,6 +148,10 @@
 		F881F28E275F61F800CED5D9 /* DrinkService */ = {
 			isa = PBXGroup;
 			children = (
+				F83E932D275F7FEA0054E2F9 /* DrinkService.swift */,
+				F83E932F275F801B0054E2F9 /* DrinkServiceDelegate.swift */,
+				F83E9331275F805B0054E2F9 /* DrinkMenu.swift */,
+				F83E9333275F80B80054E2F9 /* DarkRoastedBeansRemoteService.swift */,
 				F881F290275F61F800CED5D9 /* Info.plist */,
 			);
 			path = DrinkService;
@@ -207,6 +219,7 @@
 					};
 					F881F28C275F61F800CED5D9 = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -273,6 +286,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F83E9334275F80B80054E2F9 /* DarkRoastedBeansRemoteService.swift in Sources */,
+				F83E932E275F7FEA0054E2F9 /* DrinkService.swift in Sources */,
+				F83E9330275F801B0054E2F9 /* DrinkServiceDelegate.swift in Sources */,
+				F83E9332275F805B0054E2F9 /* DrinkMenu.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,6 +462,7 @@
 		F881F292275F61F800CED5D9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -466,6 +484,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos macosx";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -475,6 +494,7 @@
 		F881F293275F61F800CED5D9 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
