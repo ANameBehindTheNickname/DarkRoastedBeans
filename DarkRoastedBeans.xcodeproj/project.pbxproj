@@ -459,6 +459,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.manbehindnickname.DrinkService;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -488,6 +489,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 11.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.manbehindnickname.DrinkService;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
