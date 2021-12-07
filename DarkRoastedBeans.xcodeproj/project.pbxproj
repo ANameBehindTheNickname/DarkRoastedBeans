@@ -17,8 +17,8 @@
 		F83E9330275F801B0054E2F9 /* DrinkServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E932F275F801B0054E2F9 /* DrinkServiceDelegate.swift */; };
 		F83E9332275F805B0054E2F9 /* DrinkMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E9331275F805B0054E2F9 /* DrinkMenu.swift */; };
 		F83E9334275F80B80054E2F9 /* DarkRoastedBeansRemoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E9333275F80B80054E2F9 /* DarkRoastedBeansRemoteService.swift */; };
+		F83E9340275F8F350054E2F9 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83E933F275F8F350054E2F9 /* Drink.swift */; };
 		F8532F71275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F70275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift */; };
-		F8532F73275E861E00C7FA17 /* Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F72275E861E00C7FA17 /* Extra.swift */; };
 		F8532F75275E863000C7FA17 /* BrewingMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F74275E863000C7FA17 /* BrewingMachine.swift */; };
 		F8532F79275E867A00C7FA17 /* DummyMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F78275E867A00C7FA17 /* DummyMachine.swift */; };
 		F8815FFB275E009500ACE375 /* ItemListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8815FF9275E009500ACE375 /* ItemListVC.swift */; };
@@ -41,8 +41,8 @@
 		F83E932F275F801B0054E2F9 /* DrinkServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkServiceDelegate.swift; sourceTree = "<group>"; };
 		F83E9331275F805B0054E2F9 /* DrinkMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkMenu.swift; sourceTree = "<group>"; };
 		F83E9333275F80B80054E2F9 /* DarkRoastedBeansRemoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkRoastedBeansRemoteService.swift; sourceTree = "<group>"; };
+		F83E933F275F8F350054E2F9 /* Drink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
 		F8532F70275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineConnectingVCViewModel.swift; sourceTree = "<group>"; };
-		F8532F72275E861E00C7FA17 /* Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extra.swift; sourceTree = "<group>"; };
 		F8532F74275E863000C7FA17 /* BrewingMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewingMachine.swift; sourceTree = "<group>"; };
 		F8532F78275E867A00C7FA17 /* DummyMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyMachine.swift; sourceTree = "<group>"; };
 		F8815FF9275E009500ACE375 /* ItemListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListVC.swift; sourceTree = "<group>"; };
@@ -107,7 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				F8532F74275E863000C7FA17 /* BrewingMachine.swift */,
-				F8532F72275E861E00C7FA17 /* Extra.swift */,
+				F83E933F275F8F350054E2F9 /* Drink.swift */,
 			);
 			path = BrewingMachine;
 			sourceTree = "<group>";
@@ -270,7 +270,6 @@
 			files = (
 				F8394957275DFE5B00E810E4 /* AppDelegate.swift in Sources */,
 				F8815FFF275E05DF00ACE375 /* ItemViewModel.swift in Sources */,
-				F8532F73275E861E00C7FA17 /* Extra.swift in Sources */,
 				F80A9C5D275E611D00C1C8F9 /* MachineConnectingVC.swift in Sources */,
 				F8815FFB275E009500ACE375 /* ItemListVC.swift in Sources */,
 				F8532F75275E863000C7FA17 /* BrewingMachine.swift in Sources */,
@@ -278,6 +277,7 @@
 				F8816001275E07F200ACE375 /* DrinkBrewingFlow.swift in Sources */,
 				F8532F79275E867A00C7FA17 /* DummyMachine.swift in Sources */,
 				F8532F71275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift in Sources */,
+				F83E9340275F8F350054E2F9 /* Drink.swift in Sources */,
 				F8C4ADE1275F4B9600F8E67B /* BrewButtonVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

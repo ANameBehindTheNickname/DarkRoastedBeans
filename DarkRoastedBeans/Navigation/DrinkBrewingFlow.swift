@@ -27,7 +27,7 @@ final class DrinkBrewingFlow {
     
     func start() {
         let title = "Select your style"
-        let itemVMs = brewingMachine.drinks.map(ItemViewModel.item)
+        let itemVMs = brewingMachine.drinks.map { $0.name }.map(ItemViewModel.item)
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onDidSelectRow = styleStepCompleted
         navigation.pushViewController(vc, animated: false)
@@ -37,7 +37,8 @@ final class DrinkBrewingFlow {
     
     private func styleStepCompleted(styleRow: Int) {
         let title = "Select your size"
-        let itemVMs = brewingMachine.sizes.map(ItemViewModel.item)
+        let drink = brewingMachine.drinks[styleRow]
+        let itemVMs = drink.sizes.map(ItemViewModel.item)
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onDidSelectRow = { [weak self] in
             self?.sizeStepCompleted(styleRow: styleRow, sizeRow: $0)
@@ -48,7 +49,8 @@ final class DrinkBrewingFlow {
     
     private func sizeStepCompleted(styleRow: Int, sizeRow: Int) {
         let title = "Select your extras"
-        let itemVMs = brewingMachine.extras.map(ItemViewModel.item)
+        let drink = brewingMachine.drinks[styleRow]
+        let itemVMs = drink.extras.map { $0.name }.map(ItemViewModel.item)
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onViewDidLoad = {
             vc.tableView.allowsMultipleSelection = true
@@ -66,9 +68,9 @@ final class DrinkBrewingFlow {
     private func extrasStepCompleted(styleRow: Int, sizeRow: Int, extrasRows: [Int]) {
         let title = "Overview"
         let drink = brewingMachine.drinks[styleRow]
-        let size = brewingMachine.sizes[sizeRow]
-        let extras = extrasRows.map { brewingMachine.extras[$0] }.map { $0.name }
-        let itemVMs = ([drink, size] + extras).map(ItemViewModel.item)
+        let size = drink.sizes[sizeRow]
+        let extras = extrasRows.map { drink.extras[$0] }.map { $0.name }
+        let itemVMs = ([drink.name, size] + extras).map(ItemViewModel.item)
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onViewDidLoad = {
             vc.tableView.allowsSelection = false
