@@ -8,20 +8,20 @@ import UIKit
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    private lazy var navigation = UINavigationController()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let connectingVM = MachineConnectingVCViewModel(companyName: "Dark roasted beans", startInstruction: "Tab the machine to start")
         let connectingVC = MachineConnectingVC(viewModel: connectingVM)
-        let navigation = UINavigationController()
         let brewingMachine = DummyMachine()
+        brewingMachine.delegate = self
         
-        let flow = DrinkBrewingFlow(navigation: navigation, brewingMachine: brewingMachine)
-        connectingVC.onViewDidLoad = {
+        connectingVC.onViewDidLoad = { [unowned self] in
             navigation.modalPresentationStyle = .fullScreen
             connectingVC.showDetailViewController(navigation, sender: connectingVC)
-            flow.start()
+            brewingMachine.getDrinks()
         }
         
         window = UIWindow(windowScene: windowScene)
@@ -30,3 +30,9 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
+extension SceneDelegate: BrewingMachineDelegate {
+    func didReceive(_ drinks: [Drink]) {
+        let flow = DrinkBrewingFlow(navigation: navigation, drinks: drinks)
+        flow.start()
+    }
+}

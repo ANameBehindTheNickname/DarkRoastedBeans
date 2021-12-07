@@ -9,7 +9,7 @@ final class DrinkBrewingFlow {
     // MARK: - Private properites
     
     private let navigation: UINavigationController
-    private let brewingMachine: BrewingMachine
+    private let drinks: [Drink]
     
     private lazy var buttonController: NextButtonController = {
         let button = UIBarButtonItem(title: "Next", style: .plain, target: nil, action: nil)
@@ -18,16 +18,16 @@ final class DrinkBrewingFlow {
     
     // MARK: - Init
     
-    init(navigation: UINavigationController, brewingMachine: BrewingMachine) {
+    init(navigation: UINavigationController, drinks: [Drink]) {
         self.navigation = navigation
-        self.brewingMachine = brewingMachine
+        self.drinks = drinks
     }
     
     // MARK: - Public methods
     
     func start() {
         let title = "Select your style"
-        let itemVMs = brewingMachine.drinks.map { $0.name }.map(ItemViewModel.item)
+        let itemVMs = drinks.map { $0.name }.map(ItemViewModel.item)
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onDidSelectRow = styleStepCompleted
         navigation.pushViewController(vc, animated: false)
@@ -37,7 +37,7 @@ final class DrinkBrewingFlow {
     
     private func styleStepCompleted(styleRow: Int) {
         let title = "Select your size"
-        let drink = brewingMachine.drinks[styleRow]
+        let drink = drinks[styleRow]
         let itemVMs = drink.sizes.map(ItemViewModel.item)
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onDidSelectRow = { [weak self] in
@@ -49,7 +49,7 @@ final class DrinkBrewingFlow {
     
     private func sizeStepCompleted(styleRow: Int, sizeRow: Int) {
         let title = "Select your extras"
-        let drink = brewingMachine.drinks[styleRow]
+        let drink = drinks[styleRow]
         let itemVMs = drink.extras.map { $0.name }.map(ItemViewModel.item)
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onViewDidLoad = {
@@ -67,7 +67,7 @@ final class DrinkBrewingFlow {
     
     private func extrasStepCompleted(styleRow: Int, sizeRow: Int, extrasRows: [Int]) {
         let title = "Overview"
-        let drink = brewingMachine.drinks[styleRow]
+        let drink = drinks[styleRow]
         let size = drink.sizes[sizeRow]
         let extras = extrasRows.map { drink.extras[$0] }.map { $0.name }
         let itemVMs = ([drink.name, size] + extras).map(ItemViewModel.item)

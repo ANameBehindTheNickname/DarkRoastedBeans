@@ -4,5 +4,5 @@
 //
 
 protocol BrewingMachine {
-    var drinks: [Drink] { get }
+    func getDrinks()
 }
