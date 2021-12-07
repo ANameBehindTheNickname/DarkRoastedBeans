@@ -25,7 +25,7 @@
 		F8532F75275E863000C7FA17 /* BrewingMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F74275E863000C7FA17 /* BrewingMachine.swift */; };
 		F8532F79275E867A00C7FA17 /* DummyMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F78275E867A00C7FA17 /* DummyMachine.swift */; };
 		F876E052275FC1A400876857 /* AvenirNextLTPro-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = F876E050275FC1A400876857 /* AvenirNextLTPro-Bold.otf */; };
-		F876E053275FC1A400876857 /* AvenirNextLTPro-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F876E051275FC1A400876857 /* AvenirNextLTPro-Regular.otf */; };
+		F876E055275FC6C000876857 /* AvenirNext-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = F876E054275FC6C000876857 /* AvenirNext-Medium.otf */; };
 		F8815FFB275E009500ACE375 /* ItemListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8815FF9275E009500ACE375 /* ItemListVC.swift */; };
 		F8815FFC275E009500ACE375 /* ItemListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8815FFA275E009500ACE375 /* ItemListVC.xib */; };
 		F8815FFF275E05DF00ACE375 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8815FFE275E05DF00ACE375 /* ItemViewModel.swift */; };
@@ -63,7 +63,7 @@
 		F8532F74275E863000C7FA17 /* BrewingMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewingMachine.swift; sourceTree = "<group>"; };
 		F8532F78275E867A00C7FA17 /* DummyMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyMachine.swift; sourceTree = "<group>"; };
 		F876E050275FC1A400876857 /* AvenirNextLTPro-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Bold.otf"; sourceTree = "<group>"; };
-		F876E051275FC1A400876857 /* AvenirNextLTPro-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNextLTPro-Regular.otf"; sourceTree = "<group>"; };
+		F876E054275FC6C000876857 /* AvenirNext-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Medium.otf"; sourceTree = "<group>"; };
 		F8815FF9275E009500ACE375 /* ItemListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListVC.swift; sourceTree = "<group>"; };
 		F8815FFA275E009500ACE375 /* ItemListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListVC.xib; sourceTree = "<group>"; };
 		F8815FFE275E05DF00ACE375 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				F876E050275FC1A400876857 /* AvenirNextLTPro-Bold.otf */,
-				F876E051275FC1A400876857 /* AvenirNextLTPro-Regular.otf */,
+				F876E054275FC6C000876857 /* AvenirNext-Medium.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -290,9 +290,9 @@
 			files = (
 				F80A9C5E275E611D00C1C8F9 /* MachineConnectingVC.xib in Resources */,
 				F8394963275DFE5C00E810E4 /* LaunchScreen.storyboard in Resources */,
+				F876E055275FC6C000876857 /* AvenirNext-Medium.otf in Resources */,
 				F8815FFC275E009500ACE375 /* ItemListVC.xib in Resources */,
 				F876E052275FC1A400876857 /* AvenirNextLTPro-Bold.otf in Resources */,
-				F876E053275FC1A400876857 /* AvenirNextLTPro-Regular.otf in Resources */,
 				F8394960275DFE5C00E810E4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
