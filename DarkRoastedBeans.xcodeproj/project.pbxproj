@@ -7,19 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F80A9C5D275E611D00C1C8F9 /* MachineConnectingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A9C5B275E611D00C1C8F9 /* MachineConnectingVC.swift */; };
+		F80A9C5E275E611D00C1C8F9 /* MachineConnectingVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F80A9C5C275E611D00C1C8F9 /* MachineConnectingVC.xib */; };
 		F8394957275DFE5B00E810E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8394956275DFE5B00E810E4 /* AppDelegate.swift */; };
 		F8394959275DFE5B00E810E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8394958275DFE5B00E810E4 /* SceneDelegate.swift */; };
 		F8394960275DFE5C00E810E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F839495F275DFE5C00E810E4 /* Assets.xcassets */; };
 		F8394963275DFE5C00E810E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8394961275DFE5C00E810E4 /* LaunchScreen.storyboard */; };
+		F8532F71275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F70275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift */; };
+		F8532F73275E861E00C7FA17 /* Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F72275E861E00C7FA17 /* Extra.swift */; };
+		F8532F75275E863000C7FA17 /* BrewingMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F74275E863000C7FA17 /* BrewingMachine.swift */; };
+		F8532F79275E867A00C7FA17 /* DummyMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F78275E867A00C7FA17 /* DummyMachine.swift */; };
+		F8815FFB275E009500ACE375 /* ItemListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8815FF9275E009500ACE375 /* ItemListVC.swift */; };
+		F8815FFC275E009500ACE375 /* ItemListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8815FFA275E009500ACE375 /* ItemListVC.xib */; };
+		F8815FFF275E05DF00ACE375 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8815FFE275E05DF00ACE375 /* ItemViewModel.swift */; };
+		F8816001275E07F200ACE375 /* DrinkBrewingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8816000275E07F200ACE375 /* DrinkBrewingFlow.swift */; };
+		F8C4ADE1275F4B9600F8E67B /* BrewButtonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4ADDF275F4B9600F8E67B /* BrewButtonVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F80A9C5B275E611D00C1C8F9 /* MachineConnectingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineConnectingVC.swift; sourceTree = "<group>"; };
+		F80A9C5C275E611D00C1C8F9 /* MachineConnectingVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MachineConnectingVC.xib; sourceTree = "<group>"; };
 		F8394953275DFE5B00E810E4 /* DarkRoastedBeans.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DarkRoastedBeans.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8394956275DFE5B00E810E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8394958275DFE5B00E810E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F839495F275DFE5C00E810E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8394962275DFE5C00E810E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F8394964275DFE5C00E810E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8532F70275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MachineConnectingVCViewModel.swift; sourceTree = "<group>"; };
+		F8532F72275E861E00C7FA17 /* Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extra.swift; sourceTree = "<group>"; };
+		F8532F74275E863000C7FA17 /* BrewingMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewingMachine.swift; sourceTree = "<group>"; };
+		F8532F78275E867A00C7FA17 /* DummyMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyMachine.swift; sourceTree = "<group>"; };
+		F8815FF9275E009500ACE375 /* ItemListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListVC.swift; sourceTree = "<group>"; };
+		F8815FFA275E009500ACE375 /* ItemListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListVC.xib; sourceTree = "<group>"; };
+		F8815FFE275E05DF00ACE375 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
+		F8816000275E07F200ACE375 /* DrinkBrewingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkBrewingFlow.swift; sourceTree = "<group>"; };
+		F8C4ADDF275F4B9600F8E67B /* BrewButtonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewButtonVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,13 +74,56 @@
 		F8394955275DFE5B00E810E4 /* DarkRoastedBeans */ = {
 			isa = PBXGroup;
 			children = (
-				F8394956275DFE5B00E810E4 /* AppDelegate.swift */,
-				F8394958275DFE5B00E810E4 /* SceneDelegate.swift */,
+				F8816002275E07FA00ACE375 /* Navigation */,
+				F8815FFD275E009D00ACE375 /* UI */,
+				F8532F77275E865D00C7FA17 /* Main */,
 				F839495F275DFE5C00E810E4 /* Assets.xcassets */,
 				F8394961275DFE5C00E810E4 /* LaunchScreen.storyboard */,
 				F8394964275DFE5C00E810E4 /* Info.plist */,
 			);
 			path = DarkRoastedBeans;
+			sourceTree = "<group>";
+		};
+		F8532F76275E864700C7FA17 /* BrewingMachine */ = {
+			isa = PBXGroup;
+			children = (
+				F8532F74275E863000C7FA17 /* BrewingMachine.swift */,
+				F8532F72275E861E00C7FA17 /* Extra.swift */,
+			);
+			path = BrewingMachine;
+			sourceTree = "<group>";
+		};
+		F8532F77275E865D00C7FA17 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F8532F78275E867A00C7FA17 /* DummyMachine.swift */,
+				F8394956275DFE5B00E810E4 /* AppDelegate.swift */,
+				F8394958275DFE5B00E810E4 /* SceneDelegate.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F8815FFD275E009D00ACE375 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F8532F76275E864700C7FA17 /* BrewingMachine */,
+				F8532F70275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift */,
+				F80A9C5B275E611D00C1C8F9 /* MachineConnectingVC.swift */,
+				F80A9C5C275E611D00C1C8F9 /* MachineConnectingVC.xib */,
+				F8815FFE275E05DF00ACE375 /* ItemViewModel.swift */,
+				F8815FF9275E009500ACE375 /* ItemListVC.swift */,
+				F8815FFA275E009500ACE375 /* ItemListVC.xib */,
+				F8C4ADDF275F4B9600F8E67B /* BrewButtonVC.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F8816002275E07FA00ACE375 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				F8816000275E07F200ACE375 /* DrinkBrewingFlow.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,7 +183,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F80A9C5E275E611D00C1C8F9 /* MachineConnectingVC.xib in Resources */,
 				F8394963275DFE5C00E810E4 /* LaunchScreen.storyboard in Resources */,
+				F8815FFC275E009500ACE375 /* ItemListVC.xib in Resources */,
 				F8394960275DFE5C00E810E4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,7 +198,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8394957275DFE5B00E810E4 /* AppDelegate.swift in Sources */,
+				F8815FFF275E05DF00ACE375 /* ItemViewModel.swift in Sources */,
+				F8532F73275E861E00C7FA17 /* Extra.swift in Sources */,
+				F80A9C5D275E611D00C1C8F9 /* MachineConnectingVC.swift in Sources */,
+				F8815FFB275E009500ACE375 /* ItemListVC.swift in Sources */,
+				F8532F75275E863000C7FA17 /* BrewingMachine.swift in Sources */,
 				F8394959275DFE5B00E810E4 /* SceneDelegate.swift in Sources */,
+				F8816001275E07F200ACE375 /* DrinkBrewingFlow.swift in Sources */,
+				F8532F79275E867A00C7FA17 /* DummyMachine.swift in Sources */,
+				F8532F71275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift in Sources */,
+				F8C4ADE1275F4B9600F8E67B /* BrewButtonVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
