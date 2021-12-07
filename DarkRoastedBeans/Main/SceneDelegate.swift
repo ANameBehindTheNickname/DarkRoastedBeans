@@ -30,9 +30,13 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 }
 
+// MARK: - BrewingMachineDelegate
+
 extension SceneDelegate: BrewingMachineDelegate {
     func didReceive(_ drinks: [Drink]) {
         let flow = DrinkBrewingFlow(navigation: navigation, drinks: drinks)
-        flow.start()
+        DispatchQueue.main.async {
+            flow.start()
+        }
     }
 }
