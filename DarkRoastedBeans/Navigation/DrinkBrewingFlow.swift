@@ -139,14 +139,23 @@ final private class OverviewContainerVC: UIViewController {
 
 // MARK: - NextButtonController
 
-private class NextButtonController {
+final private class NextButtonController {
+    // MARK: - Subviews
+    
     let button: UIBarButtonItem
+    
+    // MARK: - Public properties
+    
     var callback: (() -> Void)?
+    
+    // MARK: - Init
     
     init(_ button: UIBarButtonItem) {
         self.button = button
         self.setup()
     }
+    
+    // MARK: - Private methods
     
     private func setup() {
         button.target = self
