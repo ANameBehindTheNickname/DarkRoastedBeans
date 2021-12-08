@@ -67,6 +67,16 @@ final class DrinkBrewingFlow {
         vc.onViewDidLoad = {
             vc.tableView.allowsMultipleSelection = true
         }
+        
+        vc.onDidSelectRow = {
+            let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0)) as? ItemListCell
+            itemListCell?.expandSubitems()
+        }
+        
+        vc.onDidDeselectRow = {
+            let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0)) as? ItemListCell
+            itemListCell?.collapseSubitems()
+        }
 
         buttonController.callback = { [weak self] in
             let selectedExtras = vc.tableView.indexPathsForSelectedRows?.map { $0.row } ?? []

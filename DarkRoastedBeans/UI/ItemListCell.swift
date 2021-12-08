@@ -12,25 +12,40 @@ final class ItemListCell: UITableViewCell {
     @IBOutlet private var itemImageView: UIImageView!
     @IBOutlet private var itemNameLabel: UILabel!
     
+    @IBOutlet private var tableViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private var tableViewBottomConstraint: NSLayoutConstraint!
+    
+    // MARK: - Properties
+    
+    private var tableViewHeight: CGFloat = 0
+    private var tableViewBottom: CGFloat = 0
+    
     // MARK: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        tableViewHeight = tableViewHeightConstraint.constant
+        tableViewHeightConstraint.constant = 0
+        tableViewBottom = tableViewBottomConstraint.constant
+        tableViewBottomConstraint.constant = 0
         selectionStyle = .none
         styleSubviews()
     }
 
     // MARK: - Public methods
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
-    }
 
     func set(_ viewModel: ItemViewModel) {
         itemImageView.image = .init(named: viewModel.logoName)
         itemNameLabel.text = viewModel.title
+    }
+    
+    func expandSubitems() {
+        toggleSubitems(shouldExpand: true)
+    }
+    
+    func collapseSubitems() {
+        toggleSubitems(shouldExpand: false)
     }
     
     // MARK: - Private methods
@@ -51,5 +66,16 @@ final class ItemListCell: UITableViewCell {
         
         itemNameLabel.font = .init(name: "AvenirNext-DemiBold", size: 14)
         itemNameLabel.textColor = .white
+    }
+    
+    private func toggleSubitems(shouldExpand: Bool) {
+        UIView.animate(withDuration: 0.3,
+                       delay: 0,
+                       options: [.allowUserInteraction, .beginFromCurrentState],
+                       animations: {
+            self.tableViewHeightConstraint.constant = shouldExpand ? self.tableViewHeight : 0
+            self.tableViewBottomConstraint.constant = shouldExpand ? self.tableViewBottom : 0
+            self.layoutIfNeeded()
+        })
     }
 }

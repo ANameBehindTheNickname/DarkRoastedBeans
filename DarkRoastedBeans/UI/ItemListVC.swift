@@ -15,6 +15,7 @@ final class ItemListVC: UIViewController {
     
     var onViewDidLoad: (() -> Void)?
     var onDidSelectRow: ((Int) -> Void)?
+    var onDidDeselectRow: ((Int) -> Void)?
     
     // MARK: - Private properites
     
@@ -71,11 +72,22 @@ extension ItemListVC: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension ItemListVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        102
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         onDidSelectRow?(indexPath.row)
+        updateTableView()
+        let cellRect = tableView.rectForRow(at: indexPath)
+        if !tableView.bounds.contains(cellRect) {
+            tableView.scrollToRow(at: indexPath, at: .none, animated: true)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        onDidDeselectRow?(indexPath.row)
+        updateTableView()
+    }
+    
+    private func updateTableView() {
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
 }
