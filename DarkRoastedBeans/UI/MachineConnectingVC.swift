@@ -55,7 +55,7 @@ final class MachineConnectingVC: UIViewController {
     }
     
     private func styleSubviews() {
-        companyNameLabel.font = .init(name: "AvenirNextLTPro-Bold", size: 16)
+        companyNameLabel.font = .init(name: "AvenirNext-Bold", size: 16)
         startInstructionLabel.font = .init(name: "AvenirNext-Medium", size: 24)
         imageView.contentMode = .scaleAspectFit
         imageView.image = .init(named: "machine_connect")

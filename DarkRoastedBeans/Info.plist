@@ -58,10 +58,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>UIAppFonts</key>
-	<array>
-		<string>AvenirNextLTPro-Bold.otf</string>
-		<string>AvenirNext-Medium.otf</string>
-	</array>
 </dict>
 </plist>
