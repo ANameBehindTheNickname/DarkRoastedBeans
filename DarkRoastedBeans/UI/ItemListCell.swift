@@ -17,6 +17,7 @@ final class ItemListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        selectionStyle = .none
         styleSubviews()
     }
 
