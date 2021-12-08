@@ -40,8 +40,11 @@ final class ItemListVC: UIViewController {
         super.viewDidLoad()
         
         listTitleLabel.text = listTitle
+        listTitleLabel.font = .init(name: "AvenirNext-Medium", size: 24)
         let nib = UINib(nibName: String(describing: ItemListCell.self), bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
         tableView.dataSource = self
         tableView.delegate = self
         onViewDidLoad?()
@@ -69,7 +72,7 @@ extension ItemListVC: UITableViewDataSource {
 
 extension ItemListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        94
+        102
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
