@@ -40,7 +40,8 @@ final class ItemListVC: UIViewController {
         super.viewDidLoad()
         
         listTitleLabel.text = listTitle
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        let nib = UINib(nibName: String(describing: ItemListCell.self), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: cellReuseIdentifier)
         tableView.dataSource = self
         tableView.delegate = self
         onViewDidLoad?()
@@ -55,19 +56,22 @@ extension ItemListVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? ItemListCell
         let vm = itemViewModels[indexPath.row]
         
-        cell.imageView?.image = .init(named: vm.logoName)
-        cell.textLabel?.text = vm.title
+        cell?.set(vm)
         
-        return cell
+        return cell ?? .init(style: .default, reuseIdentifier: nil)
     }
 }
 
 // MARK: - UITableViewDelegate
 
 extension ItemListVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        94
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         onDidSelectRow?(indexPath.row)
     }
