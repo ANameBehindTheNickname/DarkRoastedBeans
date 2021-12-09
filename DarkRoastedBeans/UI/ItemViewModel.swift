@@ -12,4 +12,8 @@ extension ItemViewModel {
     static func item(from string: String, logoName: String) -> ItemViewModel {
         .init(title: string, logoName: logoName)
     }
+    
+    static func item(from string: String) -> ItemViewModel {
+        .init(title: string, logoName: "")
+    }
 }

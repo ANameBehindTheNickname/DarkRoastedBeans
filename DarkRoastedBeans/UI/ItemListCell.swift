@@ -24,6 +24,7 @@ final class ItemListCell: UITableViewCell {
         }
     }
     
+    private(set) var selectedSubitemRow: Int?    
     private let cellReuseIdentifier = "internalCell"
     private var tableViewBottom: CGFloat = 0
     
@@ -115,9 +116,18 @@ extension ItemListCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if tableView.indexPathForSelectedRow == indexPath {
             tableView.deselectRow(at: indexPath, animated: false)
+            selectedSubitemRow = nil
             return nil
         }
 
         return indexPath
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedSubitemRow = indexPath.row
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        selectedSubitemRow = nil
     }
 }

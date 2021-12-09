@@ -85,19 +85,30 @@ final class DrinkBrewingFlow {
         }
 
         buttonController.callback = { [weak self] in
-            let selectedExtras = vc.tableView.indexPathsForSelectedRows?.map { $0.row } ?? []
-            self?.extrasStepCompleted(styleRow: styleRow, sizeRow: sizeRow, extrasRows: selectedExtras)
+            let extraIndexPaths = (0 ..< drink.extras.count).map { IndexPath(row: $0, section: 0) }
+            let selectedExtras = extraIndexPaths.reduce([Drink.Extra]()) { acc, indexPath in
+                let itemCell = vc.tableView.cellForRow(at: indexPath) as? ItemListCell
+                if let selectedRow = itemCell?.selectedSubitemRow {
+                    let oldExtra = drink.extras[indexPath.row]
+                    return acc + [Drink.Extra(name: oldExtra.name, options: [oldExtra.options[selectedRow]])]
+                }
+                
+                return acc
+            }
+            
+            self?.extrasStepCompleted(styleRow: styleRow, sizeRow: sizeRow, selectedExtras: selectedExtras)
         }
 
         vc.navigationItem.rightBarButtonItem = buttonController.button
         navigation.pushViewController(vc, animated: true)
     }
     
-    private func extrasStepCompleted(styleRow: Int, sizeRow: Int, extrasRows: [Int]) {
+    private func extrasStepCompleted(styleRow: Int, sizeRow: Int, selectedExtras: [Drink.Extra]) {
         let title = "Overview"
         let drink = drinks[styleRow]
         let size = drink.sizes[sizeRow]
-        let extras = extrasRows.map { drink.extras[$0] }.map { $0.name }
+        let extras = selectedExtras.map { $0.name }
+        let extraSubitems = selectedExtras.flatMap { $0.options }
 
         let itemsAndLogos = [
             (drink.name, "Type/\(drink.name.lowercased())"),
@@ -105,7 +116,8 @@ final class DrinkBrewingFlow {
         ] + extras.map { ($0, "Extra/\($0.lowercased())") }
         
         let itemVMs = itemsAndLogos.map(ItemViewModel.item)
-        let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
+        let extraSubitemsVMs = extraSubitems.map(ItemViewModel.item)
+        let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs + extraSubitemsVMs)
         vc.onViewDidLoad = {
             vc.tableView.allowsSelection = false
         }
