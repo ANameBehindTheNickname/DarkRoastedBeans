@@ -41,6 +41,7 @@ final class ItemListCell: UITableViewCell {
         tableView.showsVerticalScrollIndicator = false
         
         tableView.dataSource = self
+        tableView.delegate = self
         tableViewBottom = tableViewBottomConstraint.constant
         tableViewBottomConstraint.constant = 0
         selectionStyle = .none
@@ -105,5 +106,18 @@ extension ItemListCell: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? ExtraOptionCell
         cell?.optionLabel.text = subitems[indexPath.row]
         return cell ?? .init(style: .default, reuseIdentifier: cellReuseIdentifier)
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension ItemListCell: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        if tableView.indexPathForSelectedRow == indexPath {
+            tableView.deselectRow(at: indexPath, animated: false)
+            return nil
+        }
+
+        return indexPath
     }
 }
