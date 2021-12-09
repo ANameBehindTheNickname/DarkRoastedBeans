@@ -32,7 +32,14 @@ final class ItemListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        let nibName = String(describing: ExtraOptionCell.self)
+        let nib = UINib(nibName: nibName, bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.estimatedRowHeight = 64
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
+        
         tableView.dataSource = self
         tableViewBottom = tableViewBottomConstraint.constant
         tableViewBottomConstraint.constant = 0
@@ -95,8 +102,8 @@ extension ItemListCell: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
-        cell.textLabel?.text = subitems[indexPath.row]
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? ExtraOptionCell
+        cell?.optionLabel.text = subitems[indexPath.row]
+        return cell ?? .init(style: .default, reuseIdentifier: cellReuseIdentifier)
     }
 }
