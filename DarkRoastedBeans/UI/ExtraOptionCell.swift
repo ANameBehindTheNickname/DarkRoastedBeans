@@ -10,13 +10,25 @@ final class ExtraOptionCell: UITableViewCell {
     
     @IBOutlet private var backingView: UIView!
     @IBOutlet private(set) var optionLabel: UILabel!
+    @IBOutlet private var checkmarkImageView: UIImageView!
     
     // MARK: - Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        selectionStyle = .none
         styleSubviews()
+    }
+    
+    // MARK: - Public methods
+    
+    func check() {
+        checkmarkImageView.image = .init(named: "checked_circle")
+    }
+    
+    func uncheck() {
+        checkmarkImageView.image = .init(named: "unchecked_circle")
     }
     
     // MARK: - Private methods
@@ -29,5 +41,6 @@ final class ExtraOptionCell: UITableViewCell {
         
         optionLabel.font = .init(name: "AvenirNext-DemiBold", size: 14)
         optionLabel.textColor = .white
+        checkmarkImageView.image = .init(named: "unchecked_circle")
     }
 }

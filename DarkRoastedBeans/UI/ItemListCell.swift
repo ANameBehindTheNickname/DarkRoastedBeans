@@ -131,6 +131,8 @@ extension ItemListCell: UITableViewDelegate {
         if tableView.indexPathForSelectedRow == indexPath {
             tableView.deselectRow(at: indexPath, animated: false)
             selectedSubitemRow = nil
+            let cell = tableView.cellForRow(at: indexPath) as? ExtraOptionCell
+            cell?.uncheck()
             return nil
         }
 
@@ -139,9 +141,13 @@ extension ItemListCell: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedSubitemRow = indexPath.row
+        let cell = tableView.cellForRow(at: indexPath) as? ExtraOptionCell
+        cell?.check()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         selectedSubitemRow = nil
+        let cell = tableView.cellForRow(at: indexPath) as? ExtraOptionCell
+        cell?.uncheck()
     }
 }

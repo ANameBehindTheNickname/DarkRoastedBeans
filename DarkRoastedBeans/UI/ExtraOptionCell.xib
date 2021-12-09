@@ -18,20 +18,31 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nRO-B3-5b8">
-                        <rect key="frame" x="0.0" y="4" width="320" height="58"/>
+                        <rect key="frame" x="0.0" y="4" width="320" height="56.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eva-mz-hQ4">
-                                <rect key="frame" x="16" y="18" width="42" height="22"/>
+                                <rect key="frame" x="16" y="18" width="240" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V1d-oL-XEI">
+                                <rect key="frame" x="280" y="16" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="UAG-Pj-tK1"/>
+                                    <constraint firstAttribute="height" constant="24" id="j3U-dK-oRO"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eva-mz-hQ4" firstAttribute="top" secondItem="nRO-B3-5b8" secondAttribute="top" constant="18" id="4hl-UT-BUs"/>
                             <constraint firstItem="eva-mz-hQ4" firstAttribute="leading" secondItem="nRO-B3-5b8" secondAttribute="leading" constant="16" id="Dp1-lf-MHR"/>
+                            <constraint firstAttribute="bottom" secondItem="V1d-oL-XEI" secondAttribute="bottom" constant="16" id="NE6-nI-sJ7"/>
+                            <constraint firstItem="V1d-oL-XEI" firstAttribute="leading" secondItem="eva-mz-hQ4" secondAttribute="trailing" constant="24" id="R3b-5e-KU3"/>
                             <constraint firstAttribute="bottom" secondItem="eva-mz-hQ4" secondAttribute="bottom" priority="750" constant="18" id="klS-HI-Trk"/>
+                            <constraint firstItem="V1d-oL-XEI" firstAttribute="top" secondItem="nRO-B3-5b8" secondAttribute="top" constant="16" id="p1G-5y-pKH"/>
+                            <constraint firstAttribute="trailing" secondItem="V1d-oL-XEI" secondAttribute="trailing" constant="16" id="rom-Lb-47w"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -45,6 +56,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="backingView" destination="nRO-B3-5b8" id="LCb-1k-bks"/>
+                <outlet property="checkmarkImageView" destination="V1d-oL-XEI" id="J8U-xm-Iqo"/>
                 <outlet property="optionLabel" destination="eva-mz-hQ4" id="tbU-aU-kJO"/>
             </connections>
             <point key="canvasLocation" x="66.666666666666671" y="111.16071428571428"/>
