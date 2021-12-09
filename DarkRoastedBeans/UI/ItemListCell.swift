@@ -18,8 +18,13 @@ final class ItemListCell: UITableViewCell {
     
     // MARK: - Properties
     
+    var subitems = [String]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     private let cellReuseIdentifier = "internalCell"
-    private let dataDELETE = ["topping 1", "topping 2", "topping 3", "topping 4"]
     private var tableViewBottom: CGFloat = 0
     
     // MARK: - Lifecycle
@@ -86,12 +91,12 @@ final class ItemListCell: UITableViewCell {
 
 extension ItemListCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        Int.random(in: 1...dataDELETE.count)
+        subitems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
-        cell.textLabel?.text = dataDELETE[indexPath.row]
+        cell.textLabel?.text = subitems[indexPath.row]
         return cell
     }
 }
