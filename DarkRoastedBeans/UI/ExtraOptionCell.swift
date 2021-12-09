@@ -22,7 +22,12 @@ final class ExtraOptionCell: UITableViewCell {
     // MARK: - Private methods
     
     private func styleSubviews() {
-        backingView.backgroundColor = .orange
+        backgroundColor = .clear
+        
+        backingView.backgroundColor = .init(red: 155 / 255, green: 200 / 255, blue: 139 / 255, alpha: 1)
         backingView.layer.cornerRadius = 8
+        
+        optionLabel.font = .init(name: "AvenirNext-DemiBold", size: 14)
+        optionLabel.textColor = .white
     }
 }

@@ -15,6 +15,8 @@ final class ItemListCell: UITableViewCell {
     
     @IBOutlet private var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private var tableViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet private var lineViewToTableViewDistanceConstraint: NSLayoutConstraint!
+    @IBOutlet private var lineViewHeightConstraint: NSLayoutConstraint!
     
     // MARK: - Properties
     
@@ -26,6 +28,8 @@ final class ItemListCell: UITableViewCell {
     
     private(set) var selectedSubitemRow: Int?    
     private let cellReuseIdentifier = "internalCell"
+    private var lineViewHeight: CGFloat = 0
+    private var lineViewToTableView: CGFloat = 0
     private var tableViewBottom: CGFloat = 0
     
     // MARK: - Lifecycle
@@ -36,6 +40,7 @@ final class ItemListCell: UITableViewCell {
         let nibName = String(describing: ExtraOptionCell.self)
         let nib = UINib(nibName: nibName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.backgroundColor = .clear
         tableView.estimatedRowHeight = 64
         tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
@@ -45,6 +50,13 @@ final class ItemListCell: UITableViewCell {
         tableView.delegate = self
         tableViewBottom = tableViewBottomConstraint.constant
         tableViewBottomConstraint.constant = 0
+        
+        lineViewHeight = lineViewHeightConstraint.constant
+        lineViewHeightConstraint.constant = 0
+        
+        lineViewToTableView = lineViewToTableViewDistanceConstraint.constant
+        lineViewToTableViewDistanceConstraint.constant = 0
+        
         selectionStyle = .none
         styleSubviews()
     }
@@ -91,6 +103,8 @@ final class ItemListCell: UITableViewCell {
                        animations: {
             self.tableViewHeightConstraint.constant = shouldExpand ? self.tableView.contentSize.height : 0
             self.tableViewBottomConstraint.constant = shouldExpand ? self.tableViewBottom : 0
+            self.lineViewToTableViewDistanceConstraint.constant = shouldExpand ? self.lineViewToTableView : 0
+            self.lineViewHeightConstraint.constant = shouldExpand ? self.lineViewHeight : 0
             self.layoutIfNeeded()
         })
     }

@@ -33,8 +33,15 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hU3-Mh-Yej">
+                        <rect key="frame" x="40" y="98" width="188" height="1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Mnp-Wq-qHK"/>
+                        </constraints>
+                    </view>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="8Ty-41-J1K">
-                        <rect key="frame" x="40" y="98" width="188" height="0.0"/>
+                        <rect key="frame" x="40" y="111" width="188" height="0.0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="height" id="dH4-jG-iO9"/>
@@ -42,14 +49,17 @@
                     </tableView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="8Ty-41-J1K" firstAttribute="top" secondItem="8xM-gD-1ny" secondAttribute="bottom" constant="24" id="5Fe-k3-yf1"/>
+                    <constraint firstItem="8Ty-41-J1K" firstAttribute="top" secondItem="hU3-Mh-Yej" secondAttribute="bottom" constant="12" id="2EO-gE-wmN"/>
+                    <constraint firstItem="hU3-Mh-Yej" firstAttribute="trailing" secondItem="30j-Uu-r4p" secondAttribute="trailing" constant="-24" id="7ZJ-Kb-WQC"/>
+                    <constraint firstItem="hU3-Mh-Yej" firstAttribute="leading" secondItem="30j-Uu-r4p" secondAttribute="leading" constant="24" id="9JY-1V-dCH"/>
                     <constraint firstItem="30j-Uu-r4p" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="9by-YD-URG"/>
                     <constraint firstItem="8Ty-41-J1K" firstAttribute="leading" secondItem="30j-Uu-r4p" secondAttribute="leading" constant="24" id="BS9-JB-o0M"/>
                     <constraint firstAttribute="bottom" secondItem="30j-Uu-r4p" secondAttribute="bottom" constant="4" id="FcQ-s1-6bj"/>
                     <constraint firstItem="j9W-jx-ZFM" firstAttribute="trailing" secondItem="30j-Uu-r4p" secondAttribute="trailing" constant="-24" id="Neu-9N-fH5"/>
                     <constraint firstItem="8Ty-41-J1K" firstAttribute="trailing" secondItem="30j-Uu-r4p" secondAttribute="trailing" constant="-24" id="X1O-0b-5Sg"/>
-                    <constraint firstItem="8Ty-41-J1K" firstAttribute="bottom" secondItem="30j-Uu-r4p" secondAttribute="bottom" priority="750" constant="-24" id="Zfx-nX-7Kw"/>
+                    <constraint firstItem="8Ty-41-J1K" firstAttribute="bottom" secondItem="30j-Uu-r4p" secondAttribute="bottom" priority="750" constant="-20" id="Zfx-nX-7Kw"/>
                     <constraint firstAttribute="trailing" secondItem="30j-Uu-r4p" secondAttribute="trailing" constant="16" id="aeb-XI-4jL"/>
+                    <constraint firstItem="hU3-Mh-Yej" firstAttribute="top" secondItem="8xM-gD-1ny" secondAttribute="bottom" constant="24" id="aoE-k4-L1w"/>
                     <constraint firstItem="8xM-gD-1ny" firstAttribute="leading" secondItem="30j-Uu-r4p" secondAttribute="leading" constant="24" id="cJF-Q4-vOX"/>
                     <constraint firstItem="j9W-jx-ZFM" firstAttribute="centerY" secondItem="8xM-gD-1ny" secondAttribute="centerY" id="cow-CO-wQT"/>
                     <constraint firstItem="8xM-gD-1ny" firstAttribute="top" secondItem="30j-Uu-r4p" secondAttribute="top" constant="24" id="elO-Pj-F7y"/>
@@ -62,6 +72,8 @@
                 <outlet property="backingView" destination="30j-Uu-r4p" id="OiF-8K-Bxs"/>
                 <outlet property="itemImageView" destination="8xM-gD-1ny" id="Ggp-aB-5dH"/>
                 <outlet property="itemNameLabel" destination="j9W-jx-ZFM" id="ixz-eR-nlH"/>
+                <outlet property="lineViewHeightConstraint" destination="Mnp-Wq-qHK" id="gW9-fX-dVI"/>
+                <outlet property="lineViewToTableViewDistanceConstraint" destination="2EO-gE-wmN" id="lbQ-8y-eCT"/>
                 <outlet property="tableView" destination="8Ty-41-J1K" id="d0J-bF-95c"/>
                 <outlet property="tableViewBottomConstraint" destination="Zfx-nX-7Kw" id="56b-Ci-LFI"/>
                 <outlet property="tableViewHeightConstraint" destination="dH4-jG-iO9" id="WJw-D4-aG0"/>
