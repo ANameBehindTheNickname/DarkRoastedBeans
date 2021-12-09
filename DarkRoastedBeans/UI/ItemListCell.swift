@@ -11,13 +11,15 @@ final class ItemListCell: UITableViewCell {
     @IBOutlet private var backingView: UIView!
     @IBOutlet private var itemImageView: UIImageView!
     @IBOutlet private var itemNameLabel: UILabel!
+    @IBOutlet private var tableView: UITableView!
     
     @IBOutlet private var tableViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet private var tableViewBottomConstraint: NSLayoutConstraint!
     
     // MARK: - Properties
     
-    private var tableViewHeight: CGFloat = 0
+    private let cellReuseIdentifier = "internalCell"
+    private let dataDELETE = ["topping 1", "topping 2", "topping 3", "topping 4"]
     private var tableViewBottom: CGFloat = 0
     
     // MARK: - Lifecycle
@@ -25,8 +27,8 @@ final class ItemListCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        tableViewHeight = tableViewHeightConstraint.constant
-        tableViewHeightConstraint.constant = 0
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.dataSource = self
         tableViewBottom = tableViewBottomConstraint.constant
         tableViewBottomConstraint.constant = 0
         selectionStyle = .none
@@ -73,9 +75,23 @@ final class ItemListCell: UITableViewCell {
                        delay: 0,
                        options: [.allowUserInteraction, .beginFromCurrentState],
                        animations: {
-            self.tableViewHeightConstraint.constant = shouldExpand ? self.tableViewHeight : 0
+            self.tableViewHeightConstraint.constant = shouldExpand ? self.tableView.contentSize.height : 0
             self.tableViewBottomConstraint.constant = shouldExpand ? self.tableViewBottom : 0
             self.layoutIfNeeded()
         })
+    }
+}
+
+// MARK: - UITableViewDataSource
+
+extension ItemListCell: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        Int.random(in: 1...dataDELETE.count)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
+        cell.textLabel?.text = dataDELETE[indexPath.row]
+        return cell
     }
 }
