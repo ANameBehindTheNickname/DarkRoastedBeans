@@ -13,6 +13,10 @@ final class DrinkBrewingFlow {
     
     private lazy var buttonController: NextButtonController = {
         let button = UIBarButtonItem(title: "Next", style: .plain, target: nil, action: nil)
+        [UIControl.State.normal, .highlighted].forEach {
+            button.setTitleTextAttributes([.font: UIFont(name: "AvenirNext-Medium", size: 16)!], for: $0)
+        }
+        
         return .init(button)
     }()
     
@@ -125,6 +129,7 @@ final class DrinkBrewingFlow {
         let brewButtonVC = BrewButtonVC()
         brewButtonVC.onBrew = { print("Brew some drink") }
         let overviewVC = OverviewContainerVC(itemListVC: vc, brewButtonVC: brewButtonVC)
+        overviewVC.navigationItem.title = "Brew with Lex"
 
         navigation.pushViewController(overviewVC, animated: true)
     }

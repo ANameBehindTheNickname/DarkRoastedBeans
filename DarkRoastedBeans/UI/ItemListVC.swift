@@ -48,6 +48,8 @@ final class ItemListVC: UIViewController {
         tableView.showsVerticalScrollIndicator = false
         tableView.dataSource = self
         tableView.delegate = self
+        navigationItem.title = "Brew with Lex"
+        navigationItem.backBarButtonItem = .init(title: "", style: .plain, target: nil, action: nil)
         onViewDidLoad?()
     }
 }
