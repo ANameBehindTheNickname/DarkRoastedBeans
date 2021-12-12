@@ -11,7 +11,7 @@ final class DrinkBrewingFlow {
     private let navigation: UINavigationController
     private let drinks: [Drink]
     
-    private lazy var buttonController: NextButtonController = {
+    private lazy var buttonController: BarButtonController = {
         let button = UIBarButtonItem(title: "Next", style: .plain, target: nil, action: nil)
         [UIControl.State.normal, .highlighted].forEach {
             button.setTitleTextAttributes([.font: UIFont(name: "AvenirNext-Medium", size: 16)!], for: $0)
@@ -176,9 +176,9 @@ final private class OverviewContainerVC: UIViewController {
     }
 }
 
-// MARK: - NextButtonController
+// MARK: - BarButtonController
 
-final private class NextButtonController {
+final private class BarButtonController {
     // MARK: - Subviews
     
     let button: UIBarButtonItem
