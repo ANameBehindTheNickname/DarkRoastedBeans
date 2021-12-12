@@ -30,6 +30,10 @@
 		F8815FFC275E009500ACE375 /* ItemListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8815FFA275E009500ACE375 /* ItemListVC.xib */; };
 		F8815FFF275E05DF00ACE375 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8815FFE275E05DF00ACE375 /* ItemViewModel.swift */; };
 		F8816001275E07F200ACE375 /* DrinkBrewingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8816000275E07F200ACE375 /* DrinkBrewingFlow.swift */; };
+		F88541B62766274D00278F7C /* ItemContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88541B52766274D00278F7C /* ItemContentView.swift */; };
+		F88541B82766275800278F7C /* ItemContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F88541B72766275800278F7C /* ItemContentView.xib */; };
+		F88541BA27662C6C00278F7C /* NewItemListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88541B927662C6C00278F7C /* NewItemListCell.swift */; };
+		F88541BC2766335100278F7C /* ItemContentConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88541BB2766335100278F7C /* ItemContentConfiguration.swift */; };
 		F8BAC28527620C8D00A551D7 /* ExtraOptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BAC28327620C8D00A551D7 /* ExtraOptionCell.swift */; };
 		F8BAC28627620C8D00A551D7 /* ExtraOptionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8BAC28427620C8D00A551D7 /* ExtraOptionCell.xib */; };
 		F8C4ADE1275F4B9600F8E67B /* BrewButtonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8C4ADDF275F4B9600F8E67B /* BrewButtonVC.swift */; };
@@ -72,6 +76,10 @@
 		F8816000275E07F200ACE375 /* DrinkBrewingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkBrewingFlow.swift; sourceTree = "<group>"; };
 		F881F28D275F61F800CED5D9 /* DrinkService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrinkService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F881F290275F61F800CED5D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F88541B52766274D00278F7C /* ItemContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemContentView.swift; sourceTree = "<group>"; };
+		F88541B72766275800278F7C /* ItemContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemContentView.xib; sourceTree = "<group>"; };
+		F88541B927662C6C00278F7C /* NewItemListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemListCell.swift; sourceTree = "<group>"; };
+		F88541BB2766335100278F7C /* ItemContentConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemContentConfiguration.swift; sourceTree = "<group>"; };
 		F8BAC28327620C8D00A551D7 /* ExtraOptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraOptionCell.swift; sourceTree = "<group>"; };
 		F8BAC28427620C8D00A551D7 /* ExtraOptionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExtraOptionCell.xib; sourceTree = "<group>"; };
 		F8C4ADDF275F4B9600F8E67B /* BrewButtonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewButtonVC.swift; sourceTree = "<group>"; };
@@ -168,6 +176,10 @@
 				F8815FFA275E009500ACE375 /* ItemListVC.xib */,
 				F87F27212760992B00841439 /* ItemListCell.swift */,
 				F87F27222760992B00841439 /* ItemListCell.xib */,
+				F88541BB2766335100278F7C /* ItemContentConfiguration.swift */,
+				F88541B52766274D00278F7C /* ItemContentView.swift */,
+				F88541B72766275800278F7C /* ItemContentView.xib */,
+				F88541B927662C6C00278F7C /* NewItemListCell.swift */,
 				F8BAC28327620C8D00A551D7 /* ExtraOptionCell.swift */,
 				F8BAC28427620C8D00A551D7 /* ExtraOptionCell.xib */,
 				F8C4ADDF275F4B9600F8E67B /* BrewButtonVC.swift */,
@@ -292,6 +304,7 @@
 				F8BAC28627620C8D00A551D7 /* ExtraOptionCell.xib in Resources */,
 				F87F27242760992B00841439 /* ItemListCell.xib in Resources */,
 				F8394960275DFE5C00E810E4 /* Assets.xcassets in Resources */,
+				F88541B82766275800278F7C /* ItemContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,8 +325,11 @@
 				F8394957275DFE5B00E810E4 /* AppDelegate.swift in Sources */,
 				F83E934A275FAF1F0054E2F9 /* BrewingMachineDelegate.swift in Sources */,
 				F8815FFF275E05DF00ACE375 /* ItemViewModel.swift in Sources */,
+				F88541BC2766335100278F7C /* ItemContentConfiguration.swift in Sources */,
 				F8BAC28527620C8D00A551D7 /* ExtraOptionCell.swift in Sources */,
 				F80A9C5D275E611D00C1C8F9 /* MachineConnectingVC.swift in Sources */,
+				F88541B62766274D00278F7C /* ItemContentView.swift in Sources */,
+				F88541BA27662C6C00278F7C /* NewItemListCell.swift in Sources */,
 				F83E934C275FB3550054E2F9 /* BrewingMachineAdapter.swift in Sources */,
 				F8815FFB275E009500ACE375 /* ItemListVC.swift in Sources */,
 				F87F27232760992B00841439 /* ItemListCell.swift in Sources */,
