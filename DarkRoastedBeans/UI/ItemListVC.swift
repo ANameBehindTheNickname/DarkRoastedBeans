@@ -15,6 +15,7 @@ final class ItemListVC: UIViewController {
     
     var onViewDidLoad: (() -> Void)?
     var onDidSelectRow: ((Int) -> Void)?
+    var onDidDeselectRow: ((Int) -> Void)?
     
     // MARK: - Private properites
     
@@ -40,9 +41,15 @@ final class ItemListVC: UIViewController {
         super.viewDidLoad()
         
         listTitleLabel.text = listTitle
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        listTitleLabel.font = .init(name: "AvenirNext-Medium", size: 24)
+        let nib = UINib(nibName: String(describing: ItemListCell.self), bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.separatorStyle = .none
+        tableView.showsVerticalScrollIndicator = false
         tableView.dataSource = self
         tableView.delegate = self
+        navigationItem.title = "Brew with Lex"
+        navigationItem.backBarButtonItem = .init(title: "", style: .plain, target: nil, action: nil)
         onViewDidLoad?()
     }
 }
@@ -55,13 +62,12 @@ extension ItemListVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? ItemListCell
         let vm = itemViewModels[indexPath.row]
         
-        cell.imageView?.image = .init(named: vm.logoName)
-        cell.textLabel?.text = vm.title
+        cell?.set(vm)
         
-        return cell
+        return cell ?? .init(style: .default, reuseIdentifier: nil)
     }
 }
 
@@ -70,5 +76,20 @@ extension ItemListVC: UITableViewDataSource {
 extension ItemListVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         onDidSelectRow?(indexPath.row)
+        updateTableView()
+        let cellRect = tableView.rectForRow(at: indexPath)
+        if !tableView.bounds.contains(cellRect) {
+            tableView.scrollToRow(at: indexPath, at: .none, animated: true)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        onDidDeselectRow?(indexPath.row)
+        updateTableView()
+    }
+    
+    private func updateTableView() {
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
 }
