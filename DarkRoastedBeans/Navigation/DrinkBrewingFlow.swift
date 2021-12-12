@@ -31,11 +31,7 @@ final class DrinkBrewingFlow {
     
     func start() {
         let title = "Select your style"
-        let drinksWithLogos = drinks.reduce([(String, String)]()) { acc, drink in
-            acc + [(drink.name, "Type/\(drink.name.lowercased())")]
-        }
-        
-        let itemVMs = drinksWithLogos.map(ItemViewModel.item)
+        let itemVMs = ItemViewModel.drinkTypeItems(from: drinks)
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onDidSelectRow = styleStepCompleted
         navigation.pushViewController(vc, animated: false)
@@ -46,11 +42,7 @@ final class DrinkBrewingFlow {
     private func styleStepCompleted(styleRow: Int) {
         let title = "Select your size"
         let drink = drinks[styleRow]
-        let sizesWithLogos = drink.sizes.reduce([(String, String)]()) { acc, sizeName in
-            acc + [(sizeName, "Size/\(sizeName.lowercased())")]
-        }
-        
-        let itemVMs = sizesWithLogos.map(ItemViewModel.item)
+        let itemVMs = ItemViewModel.sizeItems(from: drink)
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onDidSelectRow = { [weak self] in
             self?.sizeStepCompleted(styleRow: styleRow, sizeRow: $0)
@@ -62,11 +54,7 @@ final class DrinkBrewingFlow {
     private func sizeStepCompleted(styleRow: Int, sizeRow: Int) {
         let title = "Select your extras"
         let drink = drinks[styleRow]
-        let extrasWithLogos = drink.extras.reduce([(String, String)]()) { acc, extra in
-            acc + [(extra.name, "Extra/\(extra.name.lowercased())")]
-        }
-        
-        let itemVMs = extrasWithLogos.map(ItemViewModel.item)
+        let itemVMs = ItemViewModel.extraItems(from: drink)
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onViewDidLoad = {
             vc.tableView.allowsMultipleSelection = true
@@ -109,17 +97,15 @@ final class DrinkBrewingFlow {
     
     private func extrasStepCompleted(styleRow: Int, sizeRow: Int, selectedExtras: [Drink.Extra]) {
         let title = "Overview"
+        
         let drink = drinks[styleRow]
         let size = drink.sizes[sizeRow]
-        let extras = selectedExtras.map { $0.name }
         let extraSubitems = selectedExtras.flatMap { $0.options }
-
-        let itemsAndLogos = [
-            (drink.name, "Type/\(drink.name.lowercased())"),
-            (size, "Size/\(size.lowercased())")
-        ] + extras.map { ($0, "Extra/\($0.lowercased())") }
+        let itemVMs: [ItemViewModel] = [
+            .drinkItem(from: drink),
+            .sizeItem(from: size)
+        ] + selectedExtras.map(ItemViewModel.extraItem)
         
-        let itemVMs = itemsAndLogos.map(ItemViewModel.item)
         let extraSubitemsVMs = extraSubitems.map(ItemViewModel.item)
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs + extraSubitemsVMs)
         vc.onViewDidLoad = {
