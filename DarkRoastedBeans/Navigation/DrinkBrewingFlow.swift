@@ -61,12 +61,13 @@ final class DrinkBrewingFlow {
         }
         
         vc.onDidSelectRow = {
-            let options = drink.extras[$0].options
+            let options = drink.extras[$0].options.map { ($0, "unchecked_circle") }
+            let tableConfig = TableConfiguration(viewModels: options.map(ItemViewModel.item))
             
             let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0)) as? NewItemListCell
             itemListCell?.contentConfiguration = ExpandedItemConfiguration(
                 itemConfiguration: .init(viewModel: itemVMs[$0]),
-                tableConfiguration: .init(viewModels: options.map(ItemViewModel.item))
+                tableConfiguration: tableConfig
             )
         }
         
@@ -105,7 +106,8 @@ final class DrinkBrewingFlow {
             .sizeItem(from: size)
         ] + selectedExtras.map(ItemViewModel.extraItem)
         
-        let extraSubitemsVMs = extraSubitems.map(ItemViewModel.item)
+        // TODO: - "unchecked_circle" just to compile. Change later
+        let extraSubitemsVMs = extraSubitems.map { ($0, "unchecked_circle") }.map(ItemViewModel.item)
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs + extraSubitemsVMs)
         vc.onViewDidLoad = {
             vc.tableView.allowsSelection = false

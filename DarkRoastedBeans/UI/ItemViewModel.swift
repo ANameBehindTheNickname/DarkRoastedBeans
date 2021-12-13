@@ -11,8 +11,8 @@ struct ItemViewModel {
 // MARK: - Drink mapping
 
 extension ItemViewModel {
-    static func item(from string: String) -> ItemViewModel {
-        .init(title: string, logoName: "no_logo")
+    static func item(from string: String, logoName: String) -> ItemViewModel {
+        .init(title: string, logoName: logoName)
     }
     
     static func drinkItem(from drink: Drink) -> ItemViewModel {
