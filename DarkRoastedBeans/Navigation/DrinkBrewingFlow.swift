@@ -63,12 +63,11 @@ final class DrinkBrewingFlow {
         vc.onDidSelectRow = {
             let options = drink.extras[$0].options
             
-            let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0)) as? ItemListCell
-            if itemListCell?.subitems != options {
-                itemListCell?.subitems = options
-            }
-            
-            itemListCell?.expandSubitems()
+            let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0)) as? NewItemListCell
+            itemListCell?.contentConfiguration = ExpandedItemConfiguration(
+                viewModel: itemVMs[$0],
+                expandedContentViewModels: options.map(ItemViewModel.item)
+            )
         }
         
         vc.onDidDeselectRow = {

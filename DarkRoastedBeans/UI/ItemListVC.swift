@@ -42,8 +42,9 @@ final class ItemListVC: UIViewController {
         
         listTitleLabel.text = listTitle
         listTitleLabel.font = .init(name: "AvenirNext-Medium", size: 24)
-        let nib = UINib(nibName: String(describing: ItemListCell.self), bundle: nil)
-        tableView.register(nib, forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.register(NewItemListCell.self, forCellReuseIdentifier: cellReuseIdentifier)
+        tableView.estimatedRowHeight = 311
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.separatorStyle = .none
         tableView.showsVerticalScrollIndicator = false
         tableView.dataSource = self
@@ -62,10 +63,9 @@ extension ItemListVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? ItemListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? NewItemListCell
         let vm = itemViewModels[indexPath.row]
-        
-        cell?.set(vm)
+        cell?.contentConfiguration = ItemConfiguration(viewModel: vm)
         
         return cell ?? .init(style: .default, reuseIdentifier: nil)
     }
