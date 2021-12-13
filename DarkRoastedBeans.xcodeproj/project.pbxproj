@@ -187,6 +187,7 @@
 			children = (
 				F88294F227677D1800EEE015 /* Extensions */,
 				F8532F76275E864700C7FA17 /* BrewingMachine */,
+				F88294F727677DB900EEE015 /* ContentViews */,
 				F8532F70275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift */,
 				F80A9C5B275E611D00C1C8F9 /* MachineConnectingVC.swift */,
 				F80A9C5C275E611D00C1C8F9 /* MachineConnectingVC.xib */,
@@ -195,17 +196,6 @@
 				F8815FFA275E009500ACE375 /* ItemListVC.xib */,
 				F87F27212760992B00841439 /* ItemListCell.swift */,
 				F87F27222760992B00841439 /* ItemListCell.xib */,
-				F88541BB2766335100278F7C /* ItemConfiguration.swift */,
-				F88541B52766274D00278F7C /* ItemContentView.swift */,
-				F88541B72766275800278F7C /* ItemContentView.xib */,
-				F88541C3276636A700278F7C /* ExpandedItemConfiguration.swift */,
-				F88541C527664AA600278F7C /* ExpandedItemContentView.swift */,
-				F88541CB27664B8D00278F7C /* TableConfiguration.swift */,
-				F88541C727664B7200278F7C /* TableContentView.swift */,
-				F88541C927664B8400278F7C /* TableContentView.xib */,
-				F873318027673AD600A3D027 /* CheckingItemConfiguration.swift */,
-				F873317C27673A9900A3D027 /* CheckingItemContentView.swift */,
-				F873317E27673AA300A3D027 /* CheckingItemContentView.xib */,
 				F88541B927662C6C00278F7C /* NewItemListCell.swift */,
 				F8BAC28327620C8D00A551D7 /* ExtraOptionCell.swift */,
 				F8BAC28427620C8D00A551D7 /* ExtraOptionCell.xib */,
@@ -240,6 +230,32 @@
 				F88294F527677D3400EEE015 /* UIView+ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F88294F727677DB900EEE015 /* ContentViews */ = {
+			isa = PBXGroup;
+			children = (
+				F88294F827677DD400EEE015 /* ContentConfigurations */,
+				F88541B52766274D00278F7C /* ItemContentView.swift */,
+				F88541B72766275800278F7C /* ItemContentView.xib */,
+				F88541C527664AA600278F7C /* ExpandedItemContentView.swift */,
+				F88541C727664B7200278F7C /* TableContentView.swift */,
+				F88541C927664B8400278F7C /* TableContentView.xib */,
+				F873317C27673A9900A3D027 /* CheckingItemContentView.swift */,
+				F873317E27673AA300A3D027 /* CheckingItemContentView.xib */,
+			);
+			path = ContentViews;
+			sourceTree = "<group>";
+		};
+		F88294F827677DD400EEE015 /* ContentConfigurations */ = {
+			isa = PBXGroup;
+			children = (
+				F88541BB2766335100278F7C /* ItemConfiguration.swift */,
+				F88541C3276636A700278F7C /* ExpandedItemConfiguration.swift */,
+				F88541CB27664B8D00278F7C /* TableConfiguration.swift */,
+				F873318027673AD600A3D027 /* CheckingItemConfiguration.swift */,
+			);
+			path = ContentConfigurations;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
