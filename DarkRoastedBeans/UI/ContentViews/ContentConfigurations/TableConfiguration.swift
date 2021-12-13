@@ -27,11 +27,8 @@ extension TableConfiguration: UITableViewDelegate {
         if tableView.indexPathForSelectedRow == indexPath {
             tableView.deselectRow(at: indexPath, animated: false)
             selectedSubitemRow = nil
-            let cell = tableView.cellForRow(at: indexPath) as? NewItemListCell
-            let configVM = tableItemConfigs[indexPath.row].viewModel
-            tableItemConfigs[indexPath.row] = .init(viewModel: .init(title: configVM.title, logoName: "unchecked_circle"))
-            let config = tableItemConfigs[indexPath.row]
-            cell?.contentConfiguration = config
+            let cell = tableView.cellForRow(at: indexPath)
+            cell?.contentConfiguration = updateContentConfig(at: indexPath, with: "unchecked_circle")
             return nil
         }
 
@@ -40,20 +37,20 @@ extension TableConfiguration: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedSubitemRow = indexPath.row
-        let cell = tableView.cellForRow(at: indexPath) as? NewItemListCell
-        let configVM = tableItemConfigs[indexPath.row].viewModel
-        tableItemConfigs[indexPath.row] = .init(viewModel: .init(title: configVM.title, logoName: "checked_circle"))
-        let config = tableItemConfigs[indexPath.row]
-        cell?.contentConfiguration = config
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentConfiguration = updateContentConfig(at: indexPath, with: "checked_circle")
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         selectedSubitemRow = nil
-        let cell = tableView.cellForRow(at: indexPath) as? NewItemListCell
+        let cell = tableView.cellForRow(at: indexPath)
+        cell?.contentConfiguration = updateContentConfig(at: indexPath, with: "unchecked_circle")
+    }
+    
+    private func updateContentConfig(at indexPath: IndexPath, with name: String) -> UIContentConfiguration {
         let configVM = tableItemConfigs[indexPath.row].viewModel
-        tableItemConfigs[indexPath.row] = .init(viewModel: .init(title: configVM.title, logoName: "unchecked_circle"))
-        let config = tableItemConfigs[indexPath.row]
-        cell?.contentConfiguration = config
+        tableItemConfigs[indexPath.row] = .init(viewModel: .init(title: configVM.title, logoName: name))
+        return tableItemConfigs[indexPath.row]
     }
 }
 
