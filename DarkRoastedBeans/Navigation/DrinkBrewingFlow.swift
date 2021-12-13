@@ -79,8 +79,10 @@ final class DrinkBrewingFlow {
         buttonController.callback = { [weak self] in
             let extraIndexPaths = (0 ..< drink.extras.count).map { IndexPath(row: $0, section: 0) }
             let selectedExtras = extraIndexPaths.reduce([Drink.Extra]()) { acc, indexPath in
-                let itemCell = vc.tableView.cellForRow(at: indexPath) as? ItemListCell
-                if let selectedRow = itemCell?.selectedSubitemRow {
+                let itemCell = vc.tableView.cellForRow(at: indexPath) as? NewItemListCell
+                guard let expandedConfig = itemCell?.contentConfiguration as? ExpandedItemConfiguration else { return acc }
+                
+                if let selectedRow = expandedConfig.tableConfiguration.selectedSubitemRow {
                     let oldExtra = drink.extras[indexPath.row]
                     return acc + [Drink.Extra(name: oldExtra.name, options: [oldExtra.options[selectedRow]])]
                 }
