@@ -17,10 +17,10 @@ final class ExpandedItemContentView: UIView, UIContentView {
         }
         
         self.configuration = config
-        let itemContentViewConfiguration = ItemConfiguration(viewModel: config.viewModel)
-        let tableContentViewConfiguration = TableConfiguration(viewModels: config.expandedContentViewModels)
-        itemContentView = .init(itemContentViewConfiguration)
-        tableContentView = .init(tableContentViewConfiguration)
+        let itemConfiguration = ItemConfiguration(viewModel: config.viewModel)
+        let tableConfiguration = TableConfiguration(viewModels: config.expandedContentViewModels)
+        itemContentView = .init(itemConfiguration)
+        tableContentView = .init(tableConfiguration)
         super.init(frame:.zero)
         commonInit()
     }
