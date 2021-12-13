@@ -1,0 +1,62 @@
+//
+//
+//  Copyright © 2021 ANameBehindTheNickname. All rights reserved.
+//
+
+import UIKit
+
+final class TableContentView: UIView, UIContentView {
+    @IBOutlet private var contentView: UIView!
+    @IBOutlet private(set) var tableView: UITableView!
+    
+    var configuration: UIContentConfiguration {
+        didSet {
+            configure(with: configuration)
+        }
+    }
+    
+    init(_ configuration: UIContentConfiguration) {
+        self.configuration = configuration
+        super.init(frame:.zero)
+        commonInit()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func commonInit() {
+        let nibName = String(describing: TableContentView.self)
+        Bundle.main.loadNibNamed(nibName, owner: self)
+        addSubview(contentView)
+        configureTableView()
+        configure(with: configuration)
+        constraintSubviews()
+    }
+    
+    private func configureTableView() {
+        tableView.register(NewItemListCell.self, forCellReuseIdentifier: "expandedCell")
+        tableView.estimatedRowHeight = 64
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.isScrollEnabled = false
+    }
+    
+    private func configure(with configuration: UIContentConfiguration) {
+        guard let config = configuration as? TableContentViewConfiguration else { return }
+        
+        tableView.dataSource = config
+        tableView.reloadData()
+    }
+    
+    private func constraintSubviews() {
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            contentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            contentView.topAnchor.constraint(equalTo: topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            
+            tableView.heightAnchor.constraint(equalToConstant: tableView.contentSize.height)
+        ])
+    }
+}

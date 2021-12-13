@@ -5,14 +5,14 @@
 
 struct ItemViewModel {
     let title: String
-    let logoName: String
+    var logoName: String
 }
 
 // MARK: - Drink mapping
 
 extension ItemViewModel {
     static func item(from string: String) -> ItemViewModel {
-        .init(title: string, logoName: "")
+        .init(title: string, logoName: "no_logo")
     }
     
     static func drinkItem(from drink: Drink) -> ItemViewModel {

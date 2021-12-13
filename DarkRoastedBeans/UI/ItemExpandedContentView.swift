@@ -9,13 +9,7 @@ final class ItemExpandedContentView: UIView, UIContentView {
     var configuration: UIContentConfiguration
     
     private let itemContentView: ItemContentView
-    private let label: UILabel = {
-        let label = UILabel()
-        label.backgroundColor = .red
-        label.text = "Test view"
-        label.font = UIFont(name: "AvenirNext-Bold", size: 32)
-        return label
-    }()
+    private let tableContentView: TableContentView
     
     init(_ configuration: UIContentConfiguration) {
         guard let config = configuration as? ItemExpandedContentConfiguration else {
@@ -24,7 +18,9 @@ final class ItemExpandedContentView: UIView, UIContentView {
         
         self.configuration = config
         let itemContentViewConfiguration = ItemContentConfiguration(viewModel: config.viewModel)
+        let tableContentViewConfiguration = TableContentViewConfiguration(viewModels: config.expandedContentViewModels)
         itemContentView = .init(itemContentViewConfiguration)
+        tableContentView = .init(tableContentViewConfiguration)
         super.init(frame:.zero)
         commonInit()
     }
@@ -35,23 +31,22 @@ final class ItemExpandedContentView: UIView, UIContentView {
     
     private func commonInit() {
         addSubview(itemContentView)
-        addSubview(label)
+        addSubview(tableContentView)
         constraintSubviews()
     }
     
     private func constraintSubviews() {
         itemContentView.translatesAutoresizingMaskIntoConstraints = false
-        label.translatesAutoresizingMaskIntoConstraints = false
+        tableContentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             itemContentView.leadingAnchor.constraint(equalTo: leadingAnchor),
             itemContentView.trailingAnchor.constraint(equalTo: trailingAnchor),
             itemContentView.topAnchor.constraint(equalTo: topAnchor),
-            itemContentView.bottomAnchor.constraint(equalTo: label.topAnchor),
+            itemContentView.bottomAnchor.constraint(equalTo: tableContentView.topAnchor),
             
-            label.heightAnchor.constraint(equalToConstant: 70),
-            label.leadingAnchor.constraint(equalTo: leadingAnchor),
-            label.trailingAnchor.constraint(equalTo: trailingAnchor),
-            label.bottomAnchor.constraint(equalTo: bottomAnchor)
+            tableContentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            tableContentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+            tableContentView.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }

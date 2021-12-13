@@ -7,9 +7,11 @@ import UIKit
 
 struct ItemExpandedContentConfiguration: UIContentConfiguration {
     let viewModel: ItemViewModel
+    let expandedContentViewModels: [ItemViewModel]
     
-    init(viewModel: ItemViewModel) {
+    init(viewModel: ItemViewModel, expandedContentViewModels: [ItemViewModel]) {
         self.viewModel = viewModel
+        self.expandedContentViewModels = expandedContentViewModels
     }
     
     func makeContentView() -> UIView & UIContentView {
