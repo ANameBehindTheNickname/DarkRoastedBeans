@@ -69,13 +69,7 @@ final class ExpandedItemContentView: UIView, UIContentView {
         backingView.layer.cornerRadius = 4
         
         // Shadow
-        backingView.layer.masksToBounds = false
-        backingView.layer.shadowColor = UIColor.black.cgColor
-        backingView.layer.shadowOpacity = 0.15
-        backingView.layer.shadowOffset = .init(width: 0, height: 1)
-        backingView.layer.shadowRadius = 2
-        backingView.layer.shouldRasterize = true
-        backingView.layer.rasterizationScale = UIScreen.main.scale
+        backingView.applyAppDefaultShadow()
         
         itemContentView.turnOffShadow()
         itemContentView.setBackgroundColor(.clear)

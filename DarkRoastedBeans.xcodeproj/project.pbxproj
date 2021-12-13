@@ -33,6 +33,7 @@
 		F8815FFC275E009500ACE375 /* ItemListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8815FFA275E009500ACE375 /* ItemListVC.xib */; };
 		F8815FFF275E05DF00ACE375 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8815FFE275E05DF00ACE375 /* ItemViewModel.swift */; };
 		F8816001275E07F200ACE375 /* DrinkBrewingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8816000275E07F200ACE375 /* DrinkBrewingFlow.swift */; };
+		F88294F627677D3400EEE015 /* UIView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88294F527677D3400EEE015 /* UIView+ext.swift */; };
 		F88541B62766274D00278F7C /* ItemContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88541B52766274D00278F7C /* ItemContentView.swift */; };
 		F88541B82766275800278F7C /* ItemContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F88541B72766275800278F7C /* ItemContentView.xib */; };
 		F88541BA27662C6C00278F7C /* NewItemListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88541B927662C6C00278F7C /* NewItemListCell.swift */; };
@@ -87,6 +88,7 @@
 		F8816000275E07F200ACE375 /* DrinkBrewingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrinkBrewingFlow.swift; sourceTree = "<group>"; };
 		F881F28D275F61F800CED5D9 /* DrinkService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DrinkService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F881F290275F61F800CED5D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F88294F527677D3400EEE015 /* UIView+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ext.swift"; sourceTree = "<group>"; };
 		F88541B52766274D00278F7C /* ItemContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemContentView.swift; sourceTree = "<group>"; };
 		F88541B72766275800278F7C /* ItemContentView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemContentView.xib; sourceTree = "<group>"; };
 		F88541B927662C6C00278F7C /* NewItemListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewItemListCell.swift; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 		F8815FFD275E009D00ACE375 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				F88294F227677D1800EEE015 /* Extensions */,
 				F8532F76275E864700C7FA17 /* BrewingMachine */,
 				F8532F70275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift */,
 				F80A9C5B275E611D00C1C8F9 /* MachineConnectingVC.swift */,
@@ -229,6 +232,14 @@
 				F881F290275F61F800CED5D9 /* Info.plist */,
 			);
 			path = DrinkService;
+			sourceTree = "<group>";
+		};
+		F88294F227677D1800EEE015 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F88294F527677D3400EEE015 /* UIView+ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +383,7 @@
 				F873318127673AD600A3D027 /* CheckingItemConfiguration.swift in Sources */,
 				F83E9340275F8F350054E2F9 /* Drink.swift in Sources */,
 				F8C4ADE1275F4B9600F8E67B /* BrewButtonVC.swift in Sources */,
+				F88294F627677D3400EEE015 /* UIView+ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
