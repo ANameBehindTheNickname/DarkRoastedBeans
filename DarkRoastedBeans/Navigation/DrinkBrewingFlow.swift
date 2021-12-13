@@ -62,7 +62,8 @@ final class DrinkBrewingFlow {
         
         vc.onDidSelectRow = {
             let options = drink.extras[$0].options.map { ($0, "unchecked_circle") }
-            let tableConfig = TableConfiguration(viewModels: options.map(ItemViewModel.item))
+            let checkItemConfigs = options.map(ItemViewModel.item).map(CheckingItemConfiguration.init)
+            let tableConfig = TableConfiguration(tableItemConfigs: checkItemConfigs)
             
             let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0)) as? NewItemListCell
             itemListCell?.contentConfiguration = ExpandedItemConfiguration(
