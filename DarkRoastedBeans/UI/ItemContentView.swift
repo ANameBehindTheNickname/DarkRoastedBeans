@@ -37,7 +37,7 @@ final class ItemContentView: UIView, UIContentView {
     }
     
     private func configure(with configuration: UIContentConfiguration) {
-        guard let config = configuration as? ItemContentConfiguration else { return }
+        guard let config = configuration as? ItemConfiguration else { return }
         
         imageView.image = .init(named: config.viewModel.logoName)
         label.text = config.viewModel.title

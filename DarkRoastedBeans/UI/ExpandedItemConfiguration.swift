@@ -5,7 +5,7 @@
 
 import UIKit
 
-struct ItemExpandedContentConfiguration: UIContentConfiguration {
+struct ExpandedItemConfiguration: UIContentConfiguration {
     let viewModel: ItemViewModel
     let expandedContentViewModels: [ItemViewModel]
     
@@ -15,10 +15,10 @@ struct ItemExpandedContentConfiguration: UIContentConfiguration {
     }
     
     func makeContentView() -> UIView & UIContentView {
-        ItemExpandedContentView(self)
+        ExpandedItemContentView(self)
     }
     
-    func updated(for state: UIConfigurationState) -> ItemExpandedContentConfiguration {
+    func updated(for state: UIConfigurationState) -> ExpandedItemConfiguration {
         self
     }
 }

@@ -5,20 +5,20 @@
 
 import UIKit
 
-final class ItemExpandedContentView: UIView, UIContentView {
+final class ExpandedItemContentView: UIView, UIContentView {
     var configuration: UIContentConfiguration
     
     private let itemContentView: ItemContentView
     private let tableContentView: TableContentView
     
     init(_ configuration: UIContentConfiguration) {
-        guard let config = configuration as? ItemExpandedContentConfiguration else {
-            fatalError("Developer mistake. Should be of type ItemExpandedContentConfiguration")
+        guard let config = configuration as? ExpandedItemConfiguration else {
+            fatalError("Developer mistake. Should be of type ExpandedItemConfiguration")
         }
         
         self.configuration = config
-        let itemContentViewConfiguration = ItemContentConfiguration(viewModel: config.viewModel)
-        let tableContentViewConfiguration = TableContentViewConfiguration(viewModels: config.expandedContentViewModels)
+        let itemContentViewConfiguration = ItemConfiguration(viewModel: config.viewModel)
+        let tableContentViewConfiguration = TableConfiguration(viewModels: config.expandedContentViewModels)
         itemContentView = .init(itemContentViewConfiguration)
         tableContentView = .init(tableContentViewConfiguration)
         super.init(frame:.zero)

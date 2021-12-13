@@ -5,7 +5,7 @@
 
 import UIKit
 
-final class TableContentViewConfiguration: NSObject, UIContentConfiguration {
+final class TableConfiguration: NSObject, UIContentConfiguration {
     private let viewModels: [ItemViewModel]
     
     init(viewModels: [ItemViewModel]) {
@@ -16,12 +16,12 @@ final class TableContentViewConfiguration: NSObject, UIContentConfiguration {
         TableContentView(self)
     }
     
-    func updated(for state: UIConfigurationState) -> TableContentViewConfiguration {
+    func updated(for state: UIConfigurationState) -> TableConfiguration {
         self
     }
 }
 
-extension TableContentViewConfiguration: UITableViewDataSource {
+extension TableConfiguration: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModels.count
     }

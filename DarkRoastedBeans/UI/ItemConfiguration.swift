@@ -5,7 +5,7 @@
 
 import UIKit
 
-struct ItemContentConfiguration: UIContentConfiguration {
+struct ItemConfiguration: UIContentConfiguration {
     let viewModel: ItemViewModel
     
     init(viewModel: ItemViewModel) {
@@ -16,7 +16,7 @@ struct ItemContentConfiguration: UIContentConfiguration {
         ItemContentView(self)
     }
     
-    func updated(for state: UIConfigurationState) -> ItemContentConfiguration {
+    func updated(for state: UIConfigurationState) -> ItemConfiguration {
         self
     }
 }

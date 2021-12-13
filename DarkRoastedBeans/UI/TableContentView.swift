@@ -42,7 +42,7 @@ final class TableContentView: UIView, UIContentView {
     }
     
     private func configure(with configuration: UIContentConfiguration) {
-        guard let config = configuration as? TableContentViewConfiguration else { return }
+        guard let config = configuration as? TableConfiguration else { return }
         
         tableView.dataSource = config
         tableView.reloadData()
