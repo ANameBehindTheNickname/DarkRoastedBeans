@@ -7,9 +7,11 @@ import UIKit
 
 struct ItemConfiguration: UIContentConfiguration {
     let viewModel: ItemViewModel
+    let isLineViewHidden: Bool
     
-    init(viewModel: ItemViewModel) {
+    init(viewModel: ItemViewModel, isLineViewHidden: Bool) {
         self.viewModel = viewModel
+        self.isLineViewHidden = isLineViewHidden
     }
     
     func makeContentView() -> UIView & UIContentView {

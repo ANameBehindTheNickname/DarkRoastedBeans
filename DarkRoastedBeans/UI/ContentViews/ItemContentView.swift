@@ -10,6 +10,7 @@ final class ItemContentView: UIView, UIContentView {
     @IBOutlet private var backingView: UIView!
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var label: UILabel!
+    @IBOutlet private var lineView: UIView!
     
     var configuration: UIContentConfiguration {
         didSet {
@@ -49,6 +50,7 @@ final class ItemContentView: UIView, UIContentView {
         
         imageView.image = .init(named: config.viewModel.logoName)
         label.text = config.viewModel.title
+        lineView.isHidden = config.isLineViewHidden
     }
     
     private func constraintSubviews() {

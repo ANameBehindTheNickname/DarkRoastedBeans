@@ -14,6 +14,7 @@
                 <outlet property="contentView" destination="iN0-l3-epB" id="0Re-WI-TiK"/>
                 <outlet property="imageView" destination="RBc-oC-MYs" id="2ft-50-Z0H"/>
                 <outlet property="label" destination="tNJ-Z5-TnL" id="Kli-N9-WYK"/>
+                <outlet property="lineView" destination="Inl-g3-zqO" id="tcb-bh-MYc"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -21,6 +22,13 @@
             <rect key="frame" x="0.0" y="0.0" width="296" height="136"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Inl-g3-zqO">
+                    <rect key="frame" x="40" y="132" width="216" height="1"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="bas-3g-afk"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hV8-8j-L1v">
                     <rect key="frame" x="16" y="4" width="264" height="128"/>
                     <subviews>
@@ -52,10 +60,13 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="Inl-g3-zqO" firstAttribute="top" secondItem="hV8-8j-L1v" secondAttribute="bottom" id="V3b-Dr-KoM"/>
                 <constraint firstItem="hV8-8j-L1v" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="VQ7-TZ-oPo"/>
                 <constraint firstAttribute="trailing" secondItem="hV8-8j-L1v" secondAttribute="trailing" constant="16" id="Vg3-AB-pSZ"/>
+                <constraint firstItem="Inl-g3-zqO" firstAttribute="leading" secondItem="hV8-8j-L1v" secondAttribute="leading" constant="24" id="bgg-Kv-vK0"/>
                 <constraint firstItem="hV8-8j-L1v" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="cgh-hc-eG0"/>
                 <constraint firstAttribute="bottom" secondItem="hV8-8j-L1v" secondAttribute="bottom" constant="4" id="kRY-GX-qb0"/>
+                <constraint firstItem="Inl-g3-zqO" firstAttribute="trailing" secondItem="hV8-8j-L1v" secondAttribute="trailing" constant="-24" id="yPu-Zt-HMD"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-155.19999999999999" y="-130.43478260869566"/>

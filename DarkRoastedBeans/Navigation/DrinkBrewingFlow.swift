@@ -67,14 +67,14 @@ final class DrinkBrewingFlow {
             
             let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0))
             itemListCell?.contentConfiguration = ExpandedItemConfiguration(
-                itemConfiguration: .init(viewModel: itemVMs[$0]),
+                itemConfiguration: .init(viewModel: itemVMs[$0], isLineViewHidden: false),
                 tableConfiguration: tableConfig
             )
         }
         
         vc.onDidDeselectRow = {
             let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0))
-            itemListCell?.contentConfiguration = ItemConfiguration(viewModel: itemVMs[$0])
+            itemListCell?.contentConfiguration = ItemConfiguration(viewModel: itemVMs[$0], isLineViewHidden: true)
         }
 
         buttonController.callback = { [weak self] in
