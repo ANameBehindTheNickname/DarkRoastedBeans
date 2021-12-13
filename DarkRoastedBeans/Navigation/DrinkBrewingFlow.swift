@@ -65,7 +65,7 @@ final class DrinkBrewingFlow {
             let checkItemConfigs = options.map(ItemViewModel.item).map(CheckingItemConfiguration.init)
             let tableConfig = TableConfiguration(tableItemConfigs: checkItemConfigs)
             
-            let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0)) as? NewItemListCell
+            let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0))
             itemListCell?.contentConfiguration = ExpandedItemConfiguration(
                 itemConfiguration: .init(viewModel: itemVMs[$0]),
                 tableConfiguration: tableConfig
@@ -73,14 +73,14 @@ final class DrinkBrewingFlow {
         }
         
         vc.onDidDeselectRow = {
-            let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0)) as? NewItemListCell
+            let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0))
             itemListCell?.contentConfiguration = ItemConfiguration(viewModel: itemVMs[$0])
         }
 
         buttonController.callback = { [weak self] in
             let extraIndexPaths = (0 ..< drink.extras.count).map { IndexPath(row: $0, section: 0) }
             let selectedExtras = extraIndexPaths.reduce([Drink.Extra]()) { acc, indexPath in
-                let itemCell = vc.tableView.cellForRow(at: indexPath) as? NewItemListCell
+                let itemCell = vc.tableView.cellForRow(at: indexPath)
                 guard let expandedConfig = itemCell?.contentConfiguration as? ExpandedItemConfiguration else { return acc }
                 
                 if let selectedRow = expandedConfig.tableConfiguration.selectedSubitemRow {

@@ -60,8 +60,8 @@ extension TableConfiguration: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "expandedCell", for: indexPath) as? NewItemListCell
-        cell?.contentConfiguration = tableItemConfigs[indexPath.row]
-        return cell ?? .init(style: .default, reuseIdentifier: nil)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "expandedCell", for: indexPath)
+        cell.contentConfiguration = tableItemConfigs[indexPath.row]
+        return cell
     }
 }

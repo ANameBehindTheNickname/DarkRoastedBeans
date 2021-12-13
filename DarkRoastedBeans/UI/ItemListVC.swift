@@ -63,11 +63,11 @@ extension ItemListVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? NewItemListCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath)
         let vm = itemViewModels[indexPath.row]
-        cell?.contentConfiguration = ItemConfiguration(viewModel: vm)
+        cell.contentConfiguration = ItemConfiguration(viewModel: vm)
         
-        return cell ?? .init(style: .default, reuseIdentifier: nil)
+        return cell
     }
 }
 
