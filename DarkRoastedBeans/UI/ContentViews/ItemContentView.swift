@@ -28,14 +28,6 @@ final class ItemContentView: UIView, UIContentView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setBackgroundColor(_ color: UIColor) {
-        backingView.backgroundColor = color
-    }
-    
-    func hideShadow() {
-        backingView.layer.shadowOpacity = 0
-    }
-    
     private func commonInit() {
         let nibName = String(describing: ItemContentView.self)
         Bundle.main.loadNibNamed(nibName, owner: self)
@@ -51,6 +43,12 @@ final class ItemContentView: UIView, UIContentView {
         imageView.image = .init(named: config.viewModel.logoName)
         label.text = config.viewModel.title
         lineView.isHidden = config.isLineViewHidden
+        backingView.backgroundColor = config.backgroundColor
+        if config.isShadowEnabled {
+            backingView.applyAppDefaultShadow()
+        } else {
+            backingView.layer.shadowOpacity = 0
+        }
     }
     
     private func constraintSubviews() {
@@ -65,14 +63,7 @@ final class ItemContentView: UIView, UIContentView {
     
     private func styleSubviews() {
         contentView.backgroundColor = .clear
-        
-        // Round corners
-        backingView.backgroundColor = .init(red: 174 / 255, green: 215 / 255, blue: 160 / 255, alpha: 1)
         backingView.layer.cornerRadius = 4
-        
-        // Shadow
-        backingView.applyAppDefaultShadow()
-        
         label.font = .init(name: "AvenirNext-DemiBold", size: 14)
         label.textColor = .white
     }

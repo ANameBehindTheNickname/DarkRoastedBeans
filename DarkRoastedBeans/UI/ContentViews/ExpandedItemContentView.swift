@@ -64,8 +64,5 @@ final class ExpandedItemContentView: UIView, UIContentView {
         
         // Shadow
         backingView.applyAppDefaultShadow()
-        
-        itemContentView.hideShadow()
-        itemContentView.setBackgroundColor(.clear)
     }
 }
