@@ -71,8 +71,8 @@ final class DrinkBrewingFlow {
         }
         
         vc.onDidDeselectRow = {
-            let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0)) as? ItemListCell
-            itemListCell?.collapseSubitems()
+            let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0)) as? NewItemListCell
+            itemListCell?.contentConfiguration = ItemConfiguration(viewModel: itemVMs[$0])
         }
 
         buttonController.callback = { [weak self] in
