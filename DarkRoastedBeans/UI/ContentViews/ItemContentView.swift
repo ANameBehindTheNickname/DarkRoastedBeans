@@ -32,7 +32,7 @@ final class ItemContentView: UIView, UIContentView {
         backingView.backgroundColor = color
     }
     
-    func turnOffShadow() {
+    func hideShadow() {
         backingView.layer.shadowOpacity = 0
     }
     
