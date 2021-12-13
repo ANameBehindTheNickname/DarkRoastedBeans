@@ -6,12 +6,12 @@
 import UIKit
 
 struct ExpandedItemConfiguration: UIContentConfiguration {
-    let viewModel: ItemViewModel
-    let expandedContentViewModels: [ItemViewModel]
+    let itemConfiguration: ItemConfiguration
+    let tableConfiguration: TableConfiguration
     
-    init(viewModel: ItemViewModel, expandedContentViewModels: [ItemViewModel]) {
-        self.viewModel = viewModel
-        self.expandedContentViewModels = expandedContentViewModels
+    init(itemConfiguration: ItemConfiguration, tableConfiguration: TableConfiguration) {
+        self.itemConfiguration = itemConfiguration
+        self.tableConfiguration = tableConfiguration
     }
     
     func makeContentView() -> UIView & UIContentView {

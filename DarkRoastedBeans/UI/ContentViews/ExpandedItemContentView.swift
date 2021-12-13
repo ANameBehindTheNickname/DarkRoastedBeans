@@ -16,16 +16,10 @@ final class ExpandedItemContentView: UIView, UIContentView {
         [backingView, itemContentView, tableContentView]
     }
     
-    init(_ configuration: UIContentConfiguration) {
-        guard let config = configuration as? ExpandedItemConfiguration else {
-            fatalError("Developer mistake. Should be of type ExpandedItemConfiguration")
-        }
-        
-        self.configuration = config
-        let itemConfiguration = ItemConfiguration(viewModel: config.viewModel)
-        let tableConfiguration = TableConfiguration(viewModels: config.expandedContentViewModels)
-        itemContentView = .init(itemConfiguration)
-        tableContentView = .init(tableConfiguration)
+    init(_ configuration: ExpandedItemConfiguration) {
+        self.configuration = configuration
+        itemContentView = .init(configuration.itemConfiguration)
+        tableContentView = .init(configuration.tableConfiguration)
         super.init(frame:.zero)
         commonInit()
     }

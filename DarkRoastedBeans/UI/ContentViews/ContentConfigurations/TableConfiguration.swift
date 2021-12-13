@@ -6,7 +6,7 @@
 import UIKit
 
 final class TableConfiguration: NSObject, UIContentConfiguration {
-    private let viewModels: [ItemViewModel]
+    let viewModels: [ItemViewModel]
     
     init(viewModels: [ItemViewModel]) {
         self.viewModels = viewModels

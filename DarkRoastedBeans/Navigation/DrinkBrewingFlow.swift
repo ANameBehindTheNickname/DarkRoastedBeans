@@ -65,8 +65,8 @@ final class DrinkBrewingFlow {
             
             let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0)) as? NewItemListCell
             itemListCell?.contentConfiguration = ExpandedItemConfiguration(
-                viewModel: itemVMs[$0],
-                expandedContentViewModels: options.map(ItemViewModel.item)
+                itemConfiguration: .init(viewModel: itemVMs[$0]),
+                tableConfiguration: .init(viewModels: options.map(ItemViewModel.item))
             )
         }
         
