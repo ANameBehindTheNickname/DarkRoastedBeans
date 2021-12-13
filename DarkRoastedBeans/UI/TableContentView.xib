@@ -27,14 +27,14 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="z83-0K-UcV">
-                    <rect key="frame" x="0.0" y="17" width="278" height="79"/>
+                    <rect key="frame" x="0.0" y="13" width="278" height="83"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="z83-0K-UcV" firstAttribute="top" secondItem="wpj-KP-dcF" secondAttribute="bottom" constant="16" id="7t9-dA-xno"/>
+                <constraint firstItem="z83-0K-UcV" firstAttribute="top" secondItem="wpj-KP-dcF" secondAttribute="bottom" constant="12" id="7t9-dA-xno"/>
                 <constraint firstAttribute="bottom" secondItem="z83-0K-UcV" secondAttribute="bottom" priority="750" id="ODk-lH-z3P"/>
                 <constraint firstAttribute="trailing" secondItem="z83-0K-UcV" secondAttribute="trailing" id="PtC-7W-bNx"/>
                 <constraint firstItem="wpj-KP-dcF" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Zd7-lc-ekg"/>

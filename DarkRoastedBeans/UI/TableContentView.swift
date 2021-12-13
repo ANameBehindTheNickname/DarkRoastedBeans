@@ -30,6 +30,7 @@ final class TableContentView: UIView, UIContentView {
         Bundle.main.loadNibNamed(nibName, owner: self)
         addSubview(contentView)
         configureTableView()
+        contentView.backgroundColor = .clear
         configure(with: configuration)
         constraintSubviews()
     }
@@ -39,6 +40,9 @@ final class TableContentView: UIView, UIContentView {
         tableView.estimatedRowHeight = 64
         tableView.rowHeight = UITableView.automaticDimension
         tableView.isScrollEnabled = false
+        
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .clear
     }
     
     private func configure(with configuration: UIContentConfiguration) {

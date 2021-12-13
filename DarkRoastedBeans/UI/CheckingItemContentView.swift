@@ -55,7 +55,7 @@ final class CheckingItemContentView: UIView, UIContentView {
     }
     
     private func styleSubviews() {
-        backgroundColor = .clear
+        contentView.backgroundColor = .clear
         
         backingView.backgroundColor = .init(red: 155 / 255, green: 200 / 255, blue: 139 / 255, alpha: 1)
         backingView.layer.cornerRadius = 8

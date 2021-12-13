@@ -27,6 +27,14 @@ final class ItemContentView: UIView, UIContentView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setBackgroundColor(_ color: UIColor) {
+        backingView.backgroundColor = color
+    }
+    
+    func turnOffShadow() {
+        backingView.layer.shadowOpacity = 0
+    }
+    
     private func commonInit() {
         let nibName = String(describing: ItemContentView.self)
         Bundle.main.loadNibNamed(nibName, owner: self)
@@ -54,6 +62,8 @@ final class ItemContentView: UIView, UIContentView {
     }
     
     private func styleSubviews() {
+        contentView.backgroundColor = .clear
+        
         // Round corners
         backingView.backgroundColor = .init(red: 174 / 255, green: 215 / 255, blue: 160 / 255, alpha: 1)
         backingView.layer.cornerRadius = 4
