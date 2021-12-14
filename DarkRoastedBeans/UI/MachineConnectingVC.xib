@@ -48,19 +48,29 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Unn-eT-9Cb">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <connections>
+                        <action selector="connectToMachine:" destination="-1" eventType="touchUpInside" id="rjI-Ye-Hi5"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="7xu-Zc-vj6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="3xl-Cu-meM"/>
                 <constraint firstItem="7xu-Zc-vj6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="5W2-1j-ieY"/>
+                <constraint firstItem="Unn-eT-9Cb" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Afv-yl-CRA"/>
                 <constraint firstItem="pnB-Qj-hlA" firstAttribute="top" secondItem="7xu-Zc-vj6" secondAttribute="bottom" constant="82" id="CVJ-rd-UbD"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="iJM-Dd-CvW" secondAttribute="trailing" constant="102" id="F9f-Io-2AO"/>
+                <constraint firstItem="Unn-eT-9Cb" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Pzl-7y-xoc"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7xu-Zc-vj6" secondAttribute="trailing" constant="16" id="Wf9-A0-g9y"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="iJM-Dd-CvW" secondAttribute="bottom" constant="148" id="Zkh-q4-WqH"/>
                 <constraint firstItem="iJM-Dd-CvW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="24" id="bf7-jK-zAG"/>
                 <constraint firstItem="iJM-Dd-CvW" firstAttribute="top" secondItem="pnB-Qj-hlA" secondAttribute="bottom" constant="35" id="cc0-h4-mgX"/>
                 <constraint firstItem="pnB-Qj-hlA" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="ce4-FB-Tf8"/>
+                <constraint firstAttribute="bottom" secondItem="Unn-eT-9Cb" secondAttribute="bottom" id="mLz-Nx-4mm"/>
+                <constraint firstAttribute="trailing" secondItem="Unn-eT-9Cb" secondAttribute="trailing" id="r2X-rY-A09"/>
                 <constraint firstItem="pnB-Qj-hlA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="sWs-LW-OF1"/>
             </constraints>
             <point key="canvasLocation" x="138.40000000000001" y="103.89805097451276"/>
