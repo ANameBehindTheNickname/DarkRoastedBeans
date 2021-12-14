@@ -38,8 +38,15 @@ extension BrewingMachineAdapter: DrinkServiceDelegate {
             let extrasIDs = type.extras
             
             let sizes = drinkMenu.sizes.filter { sizeIDs.contains($0._id) }.map { $0.name }
-            let extras = drinkMenu.extras.filter { extrasIDs.contains($0._id) }.map { $0.name }
-                .map { Drink.Extra(name: $0, options: []) }
+            let drinkMenuExtras = drinkMenu.extras
+                .filter { extrasIDs.contains($0._id) }
+                .map { $0 }
+            
+            
+            let extras: [Drink.Extra] = drinkMenuExtras.map {
+                let options = $0.subselections.compactMap { $0["name"] }
+                return Drink.Extra(name: $0.name, options: options)
+            }
             
             return Drink(name: name, sizes: sizes, extras: extras)
         }

@@ -19,7 +19,7 @@ public struct DrinkMenu: Decodable {
     public struct Extra: Decodable {
         public let _id: String
         public let name: String
-        let subselections: [[String: String]]
+        public let subselections: [[String: String]]
     }
     
     public let types: [DrinkType]
