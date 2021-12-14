@@ -35,7 +35,7 @@ final class DrinkBrewingFlow {
             acc + [(drink.name, "Type/\(drink.name.lowercased())")]
         }
         
-        let itemVMs = drinksWithLogos.map(ItemViewModel.item)
+        let itemVMs = drinksWithLogos.map(ItemViewModel.item).map { ItemListCellViewModel(mainItem: $0, subitems: []) }
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onDidSelectRow = styleStepCompleted
         navigation.pushViewController(vc, animated: false)
@@ -50,7 +50,7 @@ final class DrinkBrewingFlow {
             acc + [(sizeName, "Size/\(sizeName.lowercased())")]
         }
         
-        let itemVMs = sizesWithLogos.map(ItemViewModel.item)
+        let itemVMs = sizesWithLogos.map(ItemViewModel.item).map { ItemListCellViewModel(mainItem: $0, subitems: []) }
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onDidSelectRow = { [weak self] in
             self?.sizeStepCompleted(styleRow: styleRow, sizeRow: $0)
@@ -62,24 +62,21 @@ final class DrinkBrewingFlow {
     private func sizeStepCompleted(styleRow: Int, sizeRow: Int) {
         let title = "Select your extras"
         let drink = drinks[styleRow]
-        let extrasWithLogos = drink.extras.reduce([(String, String)]()) { acc, extra in
-            acc + [(extra.name, "Extra/\(extra.name.lowercased())")]
+        
+        let itemVMs = drink.extras.map { extra in
+            ItemListCellViewModel(
+                mainItem: .init(title: extra.name, logoName: "Extra/\(extra.name.lowercased())"),
+                subitems: extra.options.map { .init(title: $0, logoName: "unchecked_circle") }
+            )
         }
         
-        let itemVMs = extrasWithLogos.map(ItemViewModel.item)
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onViewDidLoad = {
             vc.tableView.allowsMultipleSelection = true
         }
         
         vc.onDidSelectRow = {
-            let options = drink.extras[$0].options
-            
             let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0)) as? ItemListCell
-            if itemListCell?.subitems != options {
-                itemListCell?.subitems = options
-            }
-            
             itemListCell?.expandSubitems()
         }
         
@@ -119,8 +116,8 @@ final class DrinkBrewingFlow {
             (size, "Size/\(size.lowercased())")
         ] + extras.map { ($0, "Extra/\($0.lowercased())") }
         
-        let itemVMs = itemsAndLogos.map(ItemViewModel.item)
-        let extraSubitemsVMs = extraSubitems.map(ItemViewModel.item)
+        let itemVMs = itemsAndLogos.map(ItemViewModel.item).map { ItemListCellViewModel(mainItem: $0, subitems: []) }
+        let extraSubitemsVMs = extraSubitems.map(ItemViewModel.item).map { ItemListCellViewModel(mainItem: $0, subitems: []) }
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs + extraSubitemsVMs)
         vc.onViewDidLoad = {
             vc.tableView.allowsSelection = false

@@ -20,14 +20,9 @@ final class ItemListCell: UITableViewCell {
     
     // MARK: - Properties
     
-    var subitems = [String]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    
-    private(set) var selectedSubitemRow: Int?    
+    private(set) var selectedSubitemRow: Int?
     private let cellReuseIdentifier = "internalCell"
+    private var viewModel: ItemListCellViewModel?
     private var lineViewHeight: CGFloat = 0
     private var lineViewToTableView: CGFloat = 0
     private var tableViewBottom: CGFloat = 0
@@ -62,10 +57,11 @@ final class ItemListCell: UITableViewCell {
     }
 
     // MARK: - Public methods
-
-    func set(_ viewModel: ItemViewModel) {
-        itemImageView.image = .init(named: viewModel.logoName)
-        itemNameLabel.text = viewModel.title
+    
+    func set(_ viewModel: ItemListCellViewModel) {
+        self.viewModel = viewModel
+        itemImageView.image = .init(named: viewModel.mainItem.logoName)
+        itemNameLabel.text = viewModel.mainItem.title
     }
     
     func expandSubitems() {
@@ -114,13 +110,19 @@ final class ItemListCell: UITableViewCell {
 
 extension ItemListCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        subitems.count
+        viewModel?.subitems.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? ExtraOptionCell
-        cell?.optionLabel.text = subitems[indexPath.row]
-        return cell ?? .init(style: .default, reuseIdentifier: cellReuseIdentifier)
+        let basicCell = UITableViewCell(style: .default, reuseIdentifier: cellReuseIdentifier)
+        guard
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? ExtraOptionCell,
+            let subitems = viewModel?.subitems
+        else { return basicCell }
+        
+        
+        cell.optionLabel.text = subitems[indexPath.row].title
+        return cell
     }
 }
 

@@ -26,6 +26,7 @@
 		F8532F79275E867A00C7FA17 /* DummyMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8532F78275E867A00C7FA17 /* DummyMachine.swift */; };
 		F87F27232760992B00841439 /* ItemListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87F27212760992B00841439 /* ItemListCell.swift */; };
 		F87F27242760992B00841439 /* ItemListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F87F27222760992B00841439 /* ItemListCell.xib */; };
+		F88057BE2768CD8300291822 /* ItemListCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88057BD2768CD8300291822 /* ItemListCellViewModel.swift */; };
 		F8815FFB275E009500ACE375 /* ItemListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8815FF9275E009500ACE375 /* ItemListVC.swift */; };
 		F8815FFC275E009500ACE375 /* ItemListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8815FFA275E009500ACE375 /* ItemListVC.xib */; };
 		F8815FFF275E05DF00ACE375 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8815FFE275E05DF00ACE375 /* ItemViewModel.swift */; };
@@ -66,6 +67,7 @@
 		F8532F78275E867A00C7FA17 /* DummyMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DummyMachine.swift; sourceTree = "<group>"; };
 		F87F27212760992B00841439 /* ItemListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListCell.swift; sourceTree = "<group>"; };
 		F87F27222760992B00841439 /* ItemListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListCell.xib; sourceTree = "<group>"; };
+		F88057BD2768CD8300291822 /* ItemListCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListCellViewModel.swift; sourceTree = "<group>"; };
 		F8815FF9275E009500ACE375 /* ItemListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListVC.swift; sourceTree = "<group>"; };
 		F8815FFA275E009500ACE375 /* ItemListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListVC.xib; sourceTree = "<group>"; };
 		F8815FFE275E05DF00ACE375 /* ItemViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
@@ -166,6 +168,7 @@
 				F8815FFE275E05DF00ACE375 /* ItemViewModel.swift */,
 				F8815FF9275E009500ACE375 /* ItemListVC.swift */,
 				F8815FFA275E009500ACE375 /* ItemListVC.xib */,
+				F88057BD2768CD8300291822 /* ItemListCellViewModel.swift */,
 				F87F27212760992B00841439 /* ItemListCell.swift */,
 				F87F27222760992B00841439 /* ItemListCell.xib */,
 				F8BAC28327620C8D00A551D7 /* ExtraOptionCell.swift */,
@@ -322,6 +325,7 @@
 				F8816001275E07F200ACE375 /* DrinkBrewingFlow.swift in Sources */,
 				F8532F79275E867A00C7FA17 /* DummyMachine.swift in Sources */,
 				F8532F71275E6F4200C7FA17 /* MachineConnectingVCViewModel.swift in Sources */,
+				F88057BE2768CD8300291822 /* ItemListCellViewModel.swift in Sources */,
 				F83E9340275F8F350054E2F9 /* Drink.swift in Sources */,
 				F8C4ADE1275F4B9600F8E67B /* BrewButtonVC.swift in Sources */,
 			);
