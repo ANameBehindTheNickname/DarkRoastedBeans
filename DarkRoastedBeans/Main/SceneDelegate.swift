@@ -4,29 +4,33 @@
 //
 
 import UIKit
+import DrinkService
 
 final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     private lazy var navigation = UINavigationController()
+    private let connectingVM = MachineConnectingVCViewModel(
+        companyName: "Dark roasted beans",
+        startInstruction: "Tap the screen to connect",
+        tutorial: "How does this work"
+    )
+    
+    private lazy var connectingVC = MachineConnectingVC(viewModel: connectingVM)
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
         setNavigationBarAppearance()
-        let connectingVM = MachineConnectingVCViewModel(
-            companyName: "Dark roasted beans",
-            startInstruction: "Tab the machine to start",
-            tutorial: "How does this work"
-        )
         
-        let connectingVC = MachineConnectingVC(viewModel: connectingVM)
-        let brewingMachine = DummyMachine()
+        let session = URLSession(configuration: .default)
+        let drinkService = DarkRoastedBeansRemoteService(session: session)
+        let brewingMachine = BrewingMachineAdapter(drinkService: drinkService)
+        drinkService.delegate = brewingMachine
         brewingMachine.delegate = self
         
-        connectingVC.onViewDidLoad = { [unowned self] in
+        connectingVC.onConnect = { [unowned self] in
             navigation.modalPresentationStyle = .fullScreen
-            connectingVC.showDetailViewController(navigation, sender: connectingVC)
             brewingMachine.getDrinks()
         }
         
@@ -54,6 +58,7 @@ extension SceneDelegate: BrewingMachineDelegate {
         let flow = DrinkBrewingFlow(navigation: navigation, drinks: drinks)
         DispatchQueue.main.async {
             flow.start()
+            self.connectingVC.showDetailViewController(self.navigation, sender: self.connectingVC)
         }
     }
 }

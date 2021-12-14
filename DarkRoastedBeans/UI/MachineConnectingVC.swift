@@ -16,7 +16,7 @@ final class MachineConnectingVC: UIViewController {
     
     // MARK: - Public properites
     
-    var onViewDidLoad: (() -> Void)?
+    var onConnect: (() -> Void)?
     
     // MARK: - Private properites
     
@@ -40,14 +40,13 @@ final class MachineConnectingVC: UIViewController {
         
         setSubviewsWithModels()
         styleSubviews()
-        
-        // Simulate machine connection
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.onViewDidLoad?()
-        }
     }
     
     // MARK: - Private methods
+    
+    @IBAction func connectToMachine(_ sender: UIButton) {
+        onConnect?()
+    }
     
     private func setSubviewsWithModels() {
         companyNameLabel.text = viewModel.companyName
