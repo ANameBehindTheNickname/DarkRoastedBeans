@@ -86,30 +86,28 @@ final class DrinkBrewingFlow {
         }
 
         buttonController.callback = { [weak self] in
-            let extraIndexPaths = (0 ..< drink.extras.count).map { IndexPath(row: $0, section: 0) }
-            let selectedExtras = extraIndexPaths.reduce([Drink.Extra]()) { acc, indexPath in
-                let itemCell = vc.tableView.cellForRow(at: indexPath) as? ItemListCell
-                if let selectedRow = itemCell?.selectedSubitemRow {
-                    let oldExtra = drink.extras[indexPath.row]
-                    return acc + [Drink.Extra(name: oldExtra.name, options: [oldExtra.options[selectedRow]])]
+            let selectedExtraRows = itemVMs.enumerated().reduce([(Int, Int)]()) { acc, element in
+                let (extraRow, extraVM) = element
+                if let selectedOptionRow = extraVM.selectedSubitemRow {
+                    return acc + [(extraRow, selectedOptionRow)]
                 }
                 
                 return acc
             }
             
-            self?.extrasStepCompleted(styleRow: styleRow, sizeRow: sizeRow, selectedExtras: selectedExtras)
+            self?.extrasStepCompleted(styleRow: styleRow, sizeRow: sizeRow, selectedExtraRows: selectedExtraRows)
         }
 
         vc.navigationItem.rightBarButtonItem = buttonController.button
         navigation.pushViewController(vc, animated: true)
     }
     
-    private func extrasStepCompleted(styleRow: Int, sizeRow: Int, selectedExtras: [Drink.Extra]) {
+    private func extrasStepCompleted(styleRow: Int, sizeRow: Int, selectedExtraRows: [(extraRow: Int, optionRow: Int)]) {
         let title = "Overview"
         let drink = drinks[styleRow]
         let size = drink.sizes[sizeRow]
-        let extras = selectedExtras.map { $0.name }
-        let extraSubitems = selectedExtras.flatMap { $0.options }
+        let extras = selectedExtraRows.map { drink.extras[$0.extraRow].name }
+        let extraSubitems = selectedExtraRows.map { drink.extras[$0.extraRow].options[$0.optionRow] }
 
         let itemsAndLogos = [
             (drink.name, "Type/\(drink.name.lowercased())"),

@@ -20,7 +20,6 @@ final class ItemListCell: UITableViewCell {
     
     // MARK: - Properties
     
-    private(set) var selectedSubitemRow: Int?
     private let cellReuseIdentifier = "internalCell"
     private var viewModel: ItemListCellViewModel?
     private var lineViewHeight: CGFloat = 0
@@ -132,7 +131,7 @@ extension ItemListCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if tableView.indexPathForSelectedRow == indexPath {
             tableView.deselectRow(at: indexPath, animated: false)
-            selectedSubitemRow = nil
+            viewModel?.selectedSubitemRow = nil
             let cell = tableView.cellForRow(at: indexPath) as? ExtraOptionCell
             cell?.uncheck()
             return nil
@@ -142,13 +141,13 @@ extension ItemListCell: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedSubitemRow = indexPath.row
+        viewModel?.selectedSubitemRow = indexPath.row
         let cell = tableView.cellForRow(at: indexPath) as? ExtraOptionCell
         cell?.check()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        selectedSubitemRow = nil
+        viewModel?.selectedSubitemRow = nil
         let cell = tableView.cellForRow(at: indexPath) as? ExtraOptionCell
         cell?.uncheck()
     }
