@@ -53,7 +53,11 @@ final class DrinkBrewingFlow {
         let itemVMs = sizesWithLogos.map(ItemViewModel.item).map { ItemListCellViewModel(mainItem: $0, subitems: []) }
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onDidSelectRow = { [weak self] in
-            self?.sizeStepCompleted(styleRow: styleRow, sizeRow: $0)
+            if drink.extras.isEmpty {
+                self?.extrasStepCompleted(styleRow: styleRow, sizeRow: $0, selectedExtraRows: [])
+            } else {
+                self?.sizeStepCompleted(styleRow: styleRow, sizeRow: $0)
+            }
         }
 
         navigation.pushViewController(vc, animated: true)
