@@ -12,6 +12,7 @@ final class TableContentView: UIView, UIContentView {
     var configuration: UIContentConfiguration {
         didSet {
             configure(with: configuration)
+            constraintSubviews()
         }
     }
     
@@ -19,10 +20,13 @@ final class TableContentView: UIView, UIContentView {
         self.configuration = configuration
         super.init(frame:.zero)
         commonInit()
+        constraintSubviews()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        self.configuration = TableConfiguration(tableItemConfigs: [])
+        super.init(coder: coder)
+        commonInit()
     }
     
     private func commonInit() {
@@ -32,7 +36,6 @@ final class TableContentView: UIView, UIContentView {
         configureTableView()
         contentView.backgroundColor = .clear
         configure(with: configuration)
-        constraintSubviews()
     }
     
     private func configureTableView() {

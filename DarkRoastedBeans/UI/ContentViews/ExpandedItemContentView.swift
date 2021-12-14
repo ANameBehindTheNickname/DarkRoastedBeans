@@ -57,12 +57,7 @@ final class ExpandedItemContentView: UIView, UIContentView {
     
     private func configureUI() {
         backingView.backgroundColor = .init(red: 174 / 255, green: 215 / 255, blue: 160 / 255, alpha: 1)
-        
-        // Round corners
-        backingView.backgroundColor = .init(red: 174 / 255, green: 215 / 255, blue: 160 / 255, alpha: 1)
         backingView.layer.cornerRadius = 4
-        
-        // Shadow
         backingView.applyAppDefaultShadow()
     }
 }
