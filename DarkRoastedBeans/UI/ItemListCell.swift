@@ -18,6 +18,8 @@ final class ItemListCell: UITableViewCell {
     @IBOutlet private var lineViewToTableViewDistanceConstraint: NSLayoutConstraint!
     @IBOutlet private var lineViewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet private var imageWidth: [NSLayoutConstraint]!
+    
     // MARK: - Properties
     
     private let cellReuseIdentifier = "internalCell"
@@ -66,7 +68,12 @@ final class ItemListCell: UITableViewCell {
             lineViewHeightConstraint.constant = lineViewHeight
         }
         
-        itemImageView.image = .init(named: viewModel.mainItem.logoName)
+        let itemImage = UIImage(named: viewModel.mainItem.logoName)
+        if itemImage == nil {
+            imageWidth.forEach { $0.constant = 0 }
+        }
+        
+        itemImageView.image = itemImage
         itemNameLabel.text = viewModel.mainItem.title
     }
     

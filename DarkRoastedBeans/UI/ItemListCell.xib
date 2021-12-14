@@ -77,6 +77,8 @@
                 <outlet property="tableView" destination="8Ty-41-J1K" id="d0J-bF-95c"/>
                 <outlet property="tableViewBottomConstraint" destination="Zfx-nX-7Kw" id="56b-Ci-LFI"/>
                 <outlet property="tableViewHeightConstraint" destination="dH4-jG-iO9" id="WJw-D4-aG0"/>
+                <outletCollection property="imageWidth" destination="1xy-Rd-Ady" collectionClass="NSMutableArray" id="6ac-Xa-FZV"/>
+                <outletCollection property="imageWidth" destination="fNs-42-7ab" collectionClass="NSMutableArray" id="0up-hX-Kre"/>
             </connections>
             <point key="canvasLocation" x="73.913043478260875" y="82.700892857142847"/>
         </tableViewCell>
