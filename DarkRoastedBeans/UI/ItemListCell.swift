@@ -59,6 +59,13 @@ final class ItemListCell: UITableViewCell {
     
     func set(_ viewModel: ItemListCellViewModel) {
         self.viewModel = viewModel
+        if viewModel.selectedSubitemRow != nil {
+            tableViewHeightConstraint.constant = 64
+            tableViewBottomConstraint.constant = tableViewBottom
+            lineViewToTableViewDistanceConstraint.constant = self.lineViewToTableView
+            lineViewHeightConstraint.constant = lineViewHeight
+        }
+        
         itemImageView.image = .init(named: viewModel.mainItem.logoName)
         itemNameLabel.text = viewModel.mainItem.title
     }
@@ -119,6 +126,9 @@ extension ItemListCell: UITableViewDataSource {
             let subitems = viewModel?.subitems
         else { return basicCell }
         
+        if viewModel?.selectedSubitemRow != nil {
+            cell.check()
+        }
         
         cell.optionLabel.text = subitems[indexPath.row].title
         return cell

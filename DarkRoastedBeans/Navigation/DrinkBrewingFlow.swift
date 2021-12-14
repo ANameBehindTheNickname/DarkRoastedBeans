@@ -105,18 +105,31 @@ final class DrinkBrewingFlow {
     private func extrasStepCompleted(styleRow: Int, sizeRow: Int, selectedExtraRows: [(extraRow: Int, optionRow: Int)]) {
         let title = "Overview"
         let drink = drinks[styleRow]
-        let size = drink.sizes[sizeRow]
-        let extras = selectedExtraRows.map { drink.extras[$0.extraRow].name }
-        let extraSubitems = selectedExtraRows.map { drink.extras[$0.extraRow].options[$0.optionRow] }
-
-        let itemsAndLogos = [
-            (drink.name, "Type/\(drink.name.lowercased())"),
-            (size, "Size/\(size.lowercased())")
-        ] + extras.map { ($0, "Extra/\($0.lowercased())") }
         
-        let itemVMs = itemsAndLogos.map(ItemViewModel.item).map { ItemListCellViewModel(mainItem: $0, subitems: []) }
-        let extraSubitemsVMs = extraSubitems.map(ItemViewModel.item).map { ItemListCellViewModel(mainItem: $0, subitems: []) }
-        let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs + extraSubitemsVMs)
+        let drinkName = drink.name
+        let drinkVM = ItemListCellViewModel(
+            mainItem: .init(title: drinkName, logoName: "Type/\(drinkName.lowercased())"),
+            subitems: []
+        )
+        
+        let sizeName = drink.sizes[sizeRow]
+        let sizeVM = ItemListCellViewModel(
+            mainItem: .init(title: sizeName, logoName: "Size/\(sizeName.lowercased())"),
+            subitems: [])
+        
+        let extraVMs: [ItemListCellViewModel] = selectedExtraRows.map {
+            let extra = drink.extras[$0.extraRow]
+            let option = extra.options[$0.optionRow]
+            let vm = ItemListCellViewModel(
+                mainItem: .init(title: extra.name, logoName: "Extra/\(extra.name.lowercased())"),
+                subitems: [.init(title: option, logoName: "checked_circle")]
+            )
+            
+            vm.selectedSubitemRow = 0
+            return vm
+        }
+        
+        let vc = ItemListVC(listTitle: title, itemViewModels: [drinkVM, sizeVM] + extraVMs)
         vc.onViewDidLoad = {
             vc.tableView.allowsSelection = false
         }
