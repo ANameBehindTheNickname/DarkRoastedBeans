@@ -134,7 +134,7 @@ final class DrinkBrewingFlow {
             vc.tableView.allowsSelection = false
         }
 
-        let brewButtonVC = BrewButtonVC()
+        let brewButtonVC = BrewButtonVC(buttonTitle: "Brew your coffee")
         brewButtonVC.onBrew = { print("Brew some drink") }
         let overviewVC = OverviewContainerVC(itemListVC: vc, brewButtonVC: brewButtonVC)
         overviewVC.navigationItem.title = "Brew with Lex"
@@ -188,9 +188,9 @@ final private class OverviewContainerVC: UIViewController {
             itemListVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             itemListVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             itemListVC.view.topAnchor.constraint(equalTo: view.topAnchor),
-            itemListVC.view.bottomAnchor.constraint(equalTo: brewButtonVC.view.topAnchor),
+            itemListVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            brewButtonVC.view.heightAnchor.constraint(equalToConstant: 100),
+            brewButtonVC.view.heightAnchor.constraint(equalToConstant: 206),
             brewButtonVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             brewButtonVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             brewButtonVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
