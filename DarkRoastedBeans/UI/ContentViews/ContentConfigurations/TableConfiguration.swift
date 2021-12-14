@@ -6,10 +6,10 @@
 import UIKit
 
 final class TableConfiguration: NSObject, UIContentConfiguration {
-    private(set) var tableItemConfigs: [CheckingItemConfiguration]
+    private(set) var tableItemConfigs: [UIContentConfiguration]
     private(set) var selectedSubitemRow: Int?
     
-    init(tableItemConfigs: [CheckingItemConfiguration]) {
+    init(tableItemConfigs: [UIContentConfiguration]) {
         self.tableItemConfigs = tableItemConfigs
     }
     
@@ -48,8 +48,11 @@ extension TableConfiguration: UITableViewDelegate {
     }
     
     private func updateContentConfig(at indexPath: IndexPath, with name: String) -> UIContentConfiguration {
-        let configVM = tableItemConfigs[indexPath.row].viewModel
-        tableItemConfigs[indexPath.row] = .init(viewModel: .init(title: configVM.title, logoName: name))
+        guard let checkingItemConfig = tableItemConfigs[indexPath.row] as? CheckingItemConfiguration
+        else { fatalError("Developer mistake. When TableConfiguration conforms to UITableViewDelegate, tableItemConfigs should be of type [CheckingItemConfiguration]") }
+        
+        let configVM = checkingItemConfig.viewModel
+        tableItemConfigs[indexPath.row] = CheckingItemConfiguration(viewModel: .init(title: configVM.title, logoName: name))
         return tableItemConfigs[indexPath.row]
     }
 }
