@@ -21,11 +21,11 @@ final class ItemListVC: UIViewController {
     
     private let cellReuseIdentifier = "cell"
     private let listTitle: String
-    private let itemViewModels: [ItemViewModel]
+    private let itemViewModels: [ItemListCellViewModel]
     
     // MARK: - Init
     
-    init(listTitle: String, itemViewModels: [ItemViewModel]) {
+    init(listTitle: String, itemViewModels: [ItemListCellViewModel]) {
         self.listTitle = listTitle
         self.itemViewModels = itemViewModels
         super.init(nibName: nil, bundle: nil)

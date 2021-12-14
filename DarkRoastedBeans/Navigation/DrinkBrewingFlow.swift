@@ -35,7 +35,7 @@ final class DrinkBrewingFlow {
             acc + [(drink.name, "Type/\(drink.name.lowercased())")]
         }
         
-        let itemVMs = drinksWithLogos.map(ItemViewModel.item)
+        let itemVMs = drinksWithLogos.map(ItemViewModel.item).map { ItemListCellViewModel(mainItem: $0, subitems: []) }
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onDidSelectRow = styleStepCompleted
         navigation.pushViewController(vc, animated: false)
@@ -50,10 +50,14 @@ final class DrinkBrewingFlow {
             acc + [(sizeName, "Size/\(sizeName.lowercased())")]
         }
         
-        let itemVMs = sizesWithLogos.map(ItemViewModel.item)
+        let itemVMs = sizesWithLogos.map(ItemViewModel.item).map { ItemListCellViewModel(mainItem: $0, subitems: []) }
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onDidSelectRow = { [weak self] in
-            self?.sizeStepCompleted(styleRow: styleRow, sizeRow: $0)
+            if drink.extras.isEmpty {
+                self?.extrasStepCompleted(styleRow: styleRow, sizeRow: $0, selectedExtraRows: [])
+            } else {
+                self?.sizeStepCompleted(styleRow: styleRow, sizeRow: $0)
+            }
         }
 
         navigation.pushViewController(vc, animated: true)
@@ -62,24 +66,21 @@ final class DrinkBrewingFlow {
     private func sizeStepCompleted(styleRow: Int, sizeRow: Int) {
         let title = "Select your extras"
         let drink = drinks[styleRow]
-        let extrasWithLogos = drink.extras.reduce([(String, String)]()) { acc, extra in
-            acc + [(extra.name, "Extra/\(extra.name.lowercased())")]
+        
+        let itemVMs = drink.extras.map { extra in
+            ItemListCellViewModel(
+                mainItem: .init(title: extra.name, logoName: "Extra/\(extra.name.lowercased())"),
+                subitems: extra.options.map { .init(title: $0, logoName: "unchecked_circle") }
+            )
         }
         
-        let itemVMs = extrasWithLogos.map(ItemViewModel.item)
         let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs)
         vc.onViewDidLoad = {
             vc.tableView.allowsMultipleSelection = true
         }
         
         vc.onDidSelectRow = {
-            let options = drink.extras[$0].options
-            
             let itemListCell = vc.tableView.cellForRow(at: .init(row: $0, section: 0)) as? ItemListCell
-            if itemListCell?.subitems != options {
-                itemListCell?.subitems = options
-            }
-            
             itemListCell?.expandSubitems()
         }
         
@@ -89,44 +90,55 @@ final class DrinkBrewingFlow {
         }
 
         buttonController.callback = { [weak self] in
-            let extraIndexPaths = (0 ..< drink.extras.count).map { IndexPath(row: $0, section: 0) }
-            let selectedExtras = extraIndexPaths.reduce([Drink.Extra]()) { acc, indexPath in
-                let itemCell = vc.tableView.cellForRow(at: indexPath) as? ItemListCell
-                if let selectedRow = itemCell?.selectedSubitemRow {
-                    let oldExtra = drink.extras[indexPath.row]
-                    return acc + [Drink.Extra(name: oldExtra.name, options: [oldExtra.options[selectedRow]])]
+            let selectedExtraRows = itemVMs.enumerated().reduce([(Int, Int)]()) { acc, element in
+                let (extraRow, extraVM) = element
+                if let selectedOptionRow = extraVM.selectedSubitemRow {
+                    return acc + [(extraRow, selectedOptionRow)]
                 }
                 
                 return acc
             }
             
-            self?.extrasStepCompleted(styleRow: styleRow, sizeRow: sizeRow, selectedExtras: selectedExtras)
+            self?.extrasStepCompleted(styleRow: styleRow, sizeRow: sizeRow, selectedExtraRows: selectedExtraRows)
         }
 
         vc.navigationItem.rightBarButtonItem = buttonController.button
         navigation.pushViewController(vc, animated: true)
     }
     
-    private func extrasStepCompleted(styleRow: Int, sizeRow: Int, selectedExtras: [Drink.Extra]) {
+    private func extrasStepCompleted(styleRow: Int, sizeRow: Int, selectedExtraRows: [(extraRow: Int, optionRow: Int)]) {
         let title = "Overview"
         let drink = drinks[styleRow]
-        let size = drink.sizes[sizeRow]
-        let extras = selectedExtras.map { $0.name }
-        let extraSubitems = selectedExtras.flatMap { $0.options }
-
-        let itemsAndLogos = [
-            (drink.name, "Type/\(drink.name.lowercased())"),
-            (size, "Size/\(size.lowercased())")
-        ] + extras.map { ($0, "Extra/\($0.lowercased())") }
         
-        let itemVMs = itemsAndLogos.map(ItemViewModel.item)
-        let extraSubitemsVMs = extraSubitems.map(ItemViewModel.item)
-        let vc = ItemListVC(listTitle: title, itemViewModels: itemVMs + extraSubitemsVMs)
+        let drinkName = drink.name
+        let drinkVM = ItemListCellViewModel(
+            mainItem: .init(title: drinkName, logoName: "Type/\(drinkName.lowercased())"),
+            subitems: []
+        )
+        
+        let sizeName = drink.sizes[sizeRow]
+        let sizeVM = ItemListCellViewModel(
+            mainItem: .init(title: sizeName, logoName: "Size/\(sizeName.lowercased())"),
+            subitems: [])
+        
+        let extraVMs: [ItemListCellViewModel] = selectedExtraRows.map {
+            let extra = drink.extras[$0.extraRow]
+            let option = extra.options[$0.optionRow]
+            let vm = ItemListCellViewModel(
+                mainItem: .init(title: extra.name, logoName: "Extra/\(extra.name.lowercased())"),
+                subitems: [.init(title: option, logoName: "checked_circle")]
+            )
+            
+            vm.selectedSubitemRow = 0
+            return vm
+        }
+        
+        let vc = ItemListVC(listTitle: title, itemViewModels: [drinkVM, sizeVM] + extraVMs)
         vc.onViewDidLoad = {
             vc.tableView.allowsSelection = false
         }
 
-        let brewButtonVC = BrewButtonVC()
+        let brewButtonVC = BrewButtonVC(buttonTitle: "Brew your coffee")
         brewButtonVC.onBrew = { print("Brew some drink") }
         let overviewVC = OverviewContainerVC(itemListVC: vc, brewButtonVC: brewButtonVC)
         overviewVC.navigationItem.title = "Brew with Lex"
@@ -180,9 +192,9 @@ final private class OverviewContainerVC: UIViewController {
             itemListVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             itemListVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             itemListVC.view.topAnchor.constraint(equalTo: view.topAnchor),
-            itemListVC.view.bottomAnchor.constraint(equalTo: brewButtonVC.view.topAnchor),
+            itemListVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
-            brewButtonVC.view.heightAnchor.constraint(equalToConstant: 100),
+            brewButtonVC.view.heightAnchor.constraint(equalToConstant: 206),
             brewButtonVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             brewButtonVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             brewButtonVC.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),

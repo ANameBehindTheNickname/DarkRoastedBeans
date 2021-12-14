@@ -18,16 +18,12 @@ final class ItemListCell: UITableViewCell {
     @IBOutlet private var lineViewToTableViewDistanceConstraint: NSLayoutConstraint!
     @IBOutlet private var lineViewHeightConstraint: NSLayoutConstraint!
     
+    @IBOutlet private var imageWidth: [NSLayoutConstraint]!
+    
     // MARK: - Properties
     
-    var subitems = [String]() {
-        didSet {
-            tableView.reloadData()
-        }
-    }
-    
-    private(set) var selectedSubitemRow: Int?    
     private let cellReuseIdentifier = "internalCell"
+    private var viewModel: ItemListCellViewModel?
     private var lineViewHeight: CGFloat = 0
     private var lineViewToTableView: CGFloat = 0
     private var tableViewBottom: CGFloat = 0
@@ -62,10 +58,23 @@ final class ItemListCell: UITableViewCell {
     }
 
     // MARK: - Public methods
-
-    func set(_ viewModel: ItemViewModel) {
-        itemImageView.image = .init(named: viewModel.logoName)
-        itemNameLabel.text = viewModel.title
+    
+    func set(_ viewModel: ItemListCellViewModel) {
+        self.viewModel = viewModel
+        if viewModel.selectedSubitemRow != nil {
+            tableViewHeightConstraint.constant = 64
+            tableViewBottomConstraint.constant = tableViewBottom
+            lineViewToTableViewDistanceConstraint.constant = self.lineViewToTableView
+            lineViewHeightConstraint.constant = lineViewHeight
+        }
+        
+        let itemImage = UIImage(named: viewModel.mainItem.logoName)
+        if itemImage == nil {
+            imageWidth.forEach { $0.constant = 0 }
+        }
+        
+        itemImageView.image = itemImage
+        itemNameLabel.text = viewModel.mainItem.title
     }
     
     func expandSubitems() {
@@ -114,13 +123,22 @@ final class ItemListCell: UITableViewCell {
 
 extension ItemListCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        subitems.count
+        viewModel?.subitems.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? ExtraOptionCell
-        cell?.optionLabel.text = subitems[indexPath.row]
-        return cell ?? .init(style: .default, reuseIdentifier: cellReuseIdentifier)
+        let basicCell = UITableViewCell(style: .default, reuseIdentifier: cellReuseIdentifier)
+        guard
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellReuseIdentifier, for: indexPath) as? ExtraOptionCell,
+            let subitems = viewModel?.subitems
+        else { return basicCell }
+        
+        if viewModel?.selectedSubitemRow != nil {
+            cell.check()
+        }
+        
+        cell.optionLabel.text = subitems[indexPath.row].title
+        return cell
     }
 }
 
@@ -130,7 +148,7 @@ extension ItemListCell: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if tableView.indexPathForSelectedRow == indexPath {
             tableView.deselectRow(at: indexPath, animated: false)
-            selectedSubitemRow = nil
+            viewModel?.selectedSubitemRow = nil
             let cell = tableView.cellForRow(at: indexPath) as? ExtraOptionCell
             cell?.uncheck()
             return nil
@@ -140,13 +158,13 @@ extension ItemListCell: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedSubitemRow = indexPath.row
+        viewModel?.selectedSubitemRow = indexPath.row
         let cell = tableView.cellForRow(at: indexPath) as? ExtraOptionCell
         cell?.check()
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        selectedSubitemRow = nil
+        viewModel?.selectedSubitemRow = nil
         let cell = tableView.cellForRow(at: indexPath) as? ExtraOptionCell
         cell?.uncheck()
     }
