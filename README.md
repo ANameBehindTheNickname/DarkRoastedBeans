@@ -29,6 +29,7 @@ If there are no Extras, this step is skipped, and the User proceeds to the Overv
 
 # 🎭 Animations
 There are custom animations of presenting and hiding Extra options.
+Brew button on the Overview screen also has a custom animation.
 
 # 🖇 App composition
 Neither the DrinkService module nor the UI module doesn't depend on each other. They are connected with `BrewingMachineAdapter`, which takes the `DrinkService` instance via initializer, and conforms to `BrewingMachine` (the interface that UI uses to talk to the outside world). It also conforms to `DrinkServiceDelegate` and notifies UI via `delegate: BrewingMachineDelegate` property.
