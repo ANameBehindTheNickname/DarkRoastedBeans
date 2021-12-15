@@ -5,11 +5,33 @@
 
 import UIKit
 
+private final class AnimatedButton: UIButton {
+    override var isHighlighted: Bool {
+        didSet {
+            let transform: CGAffineTransform = isHighlighted ? .init(scaleX: 0.95, y: 0.95) : .identity
+            animate(transform)
+        }
+    }
+    
+    private func animate(_ transform: CGAffineTransform) {
+        UIView.animate(
+            withDuration: 0.4,
+            delay: 0,
+            usingSpringWithDamping: 0.5,
+            initialSpringVelocity: 3,
+            options: [.curveEaseInOut],
+            animations: {
+                self.transform = transform
+            }
+        )
+    }
+}
+
 final class BrewButtonVC: UIViewController {
     // MARK: - Subviews
     
-    private let brewButton: UIButton = {
-        let button = UIButton()
+    private let brewButton: AnimatedButton = {
+        let button = AnimatedButton()
         button.backgroundColor = .systemBackground
         button.titleLabel?.font = UIFont(name: "AvenirNext-Bold", size: 18)
         return button
@@ -31,10 +53,6 @@ final class BrewButtonVC: UIViewController {
     }
     
     // MARK: - Lifecycle
-    
-//    override func loadView() {
-//        view = brewButton
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
