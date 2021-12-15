@@ -43,5 +43,4 @@ It was fun to refactor (I certainly liked how my code UI improved), but due to t
 In this project I used GitFlow.
 
 # 🎉 Thank you
-I hope you'll like what you'll see in my project. 
-Have a good day!
+I hope you'll like what you'll see in my project. Have a good day!
