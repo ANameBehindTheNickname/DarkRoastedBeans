@@ -1,7 +1,5 @@
 # DarkRoastedBeans <img src="https://img.shields.io/badge/iOS-13.0+-00ADD8?logo=apple"/>
 
-Dear reviewers, thank you for taking the time to review my project.
-
 # 🤔 Business logic
 At the core of the application lies the `DrinkService` protocol that has only one function – `getDrinkMenu`.
 The idea to program against this interface gives more flexibility and maintainability to the Client.
@@ -36,7 +34,7 @@ Neither the DrinkService module nor the UI module doesn't depend on each other. 
 All of the classes instantiated and composed inside the Composition Root.
 
 # 🦾 Refactoring
-I would be very happy if you also reviewed [feature/refactoring](https://github.com/ANameBehindTheNickname/DarkRoastedBeans/tree/feature/refactoring) branch.
+There is [feature/refactoring](https://github.com/ANameBehindTheNickname/DarkRoastedBeans/tree/feature/refactoring) branch.
 It has a much cleaner UI design (I compose views instead of having constraints logic), although not finished. I use iOS14 APIs `UIContentView` and `UIContentConfiguration`.
 It was fun to refactor (I certainly liked how my code UI improved), but due to the lack of time and first acquaintance with those APIs, I decided to roll back and finish what I started.
 
